@@ -5,3 +5,38 @@ GET http://localhost:5030/health
 GET http://localhost:5030/api/listings
 
 ###
+
+POST http://localhost:5030/api/listings 
+Content-Type: application/json 
+
+{
+
+"name": "Mariskooli",
+"price": 60.99,
+"description": "Punainen mariskooli",
+"image": "https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg"
+
+}
+
+###
+
+POST http://localhost:5030/api/users/signup 
+Content-Type: application/json
+
+{
+"name": "Alan",
+"email": "al@smith.com",
+"password": "allan12345"
+}
+
+###
+
+POST http://localhost:5030/api/users/login 
+Content-Type: application/json
+
+{
+"email": "al@smith.com",
+"password": "allan12345"
+}
+
+###
