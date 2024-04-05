@@ -1,12 +1,13 @@
-import mysql from 'mysql2/promise';
+const mysql = require('mysql2/promise');
+require('dotenv').config();
 
-async function queryDatabase() {
-  const connection = await mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    database: 'listings_db',
-    password: 'listingspw'
-  });
-}
+const pool = mysql.createPool({
+    host: process.env.MYSQL_HOST,
+    user: process.env.MYSQL_USER,
+    password: process.env.MYSQL_PASSWORD,
+    database: process.env.MYSQL_DATABASE,
+    port: 3307,
+    connectionLimit: 10,
+});
 
-queryDatabase();
+module.exports = pool;
