@@ -1,0 +1,7 @@
+GET http://localhost:5030/health
+
+###
+
+GET http://localhost:5030/api/listings
+
+###
