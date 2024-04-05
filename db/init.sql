@@ -10,11 +10,12 @@ CREATE TABLE IF NOT EXISTS `listings` (
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = latin1;
 
-INSERT INTO `menuitems` (`name`, `price`, `description`, `image`) VALUES (
+INSERT INTO `listings` (`name`, `price`, `description`, `image`, `owner`) VALUES (
   'Muumimuki', 
   '30.99', 
   'Harvinainen keräilyesine', 
-  'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560'
+  'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560',
+  'ADMIN'
   );
 CREATE TABLE IF NOT EXISTS `users` (
   `id` VARCHAR(36) NOT NULL,
