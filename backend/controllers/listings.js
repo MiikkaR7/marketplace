@@ -1,4 +1,17 @@
+const Joi = require('joi');
+
 const listings = require('../models/listings');
+
+//Input validation
+
+const ListingSchema = Joi.object({
+    name: Joi.string().required().min(3),
+    price: Joi.number().required().min(0),
+    description: Joi.string().required().min(1),
+    image: Joi.string().min(1)
+})
+
+//Get all listings
 
 const getAllListings = async (req, res) => {
     try {
@@ -12,7 +25,52 @@ const getAllListings = async (req, res) => {
 
 }
 
+//Create new listing
+
+const createNewListing = async (req, res) => {
+    try {
+
+        const listing = {
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+            image: req.body.image,
+            owner: "TEMPUSER"
+        }
+
+        
+        const result = await listings.findByListing(listing);
+        if (result.length > 0) {
+        res.status(400).send('Listing already exists');
+        return;
+        }
+
+
+        const { error } = ListingSchema.validate(req.body);
+
+        if (error) {
+            res.status(400).send(error.details[0].message);
+            return;
+        }
+
+        const response = await listings.createNewListing(listing);
+        if (response.affectedRows === 1) {
+            const id = response.insertId;
+            const addedListing = await listings.findListingById(id)
+            res.status(201).json(addedListing[0]);
+            console.log(response);
+        } else {
+            res.status(500).json({message: "Could not add the listing"});
+        }
+
+    }   catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error[0]});
+    }
+}
+
 
 module.exports = {
-    getAllListings
+    getAllListings,
+    createNewListing
   };
