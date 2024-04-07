@@ -7,14 +7,31 @@ GET http://localhost:5030/api/listings
 ###
 
 POST http://localhost:5030/api/listings 
-Content-Type: application/json 
+Content-Type: application/json
+Authorization: BEARER {{authToken}} 
 
 {
 
-"name": "Mariskooli",
+"name": "Mariskooli2",
 "price": 60.99,
 "description": "Punainen mariskooli",
 "image": "https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg"
+
+}
+
+###
+
+PUT http://localhost:5030/api/listings 
+Content-Type: application/json
+Authorization: BEARER {{authToken}} 
+
+{
+
+"id": 1,
+"name": "Muumimuki",
+"price": 30.99,
+"description": "Harvinainen kerailyesine",
+"image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560"
 
 }
 
@@ -24,19 +41,24 @@ POST http://localhost:5030/api/users/signup
 Content-Type: application/json
 
 {
-"name": "Alan",
-"email": "al@smith.com",
-"password": "allan12345"
+"name": "Restuser",
+"email": "restuser@domain.com",
+"password": "password123"
 }
 
 ###
+
+# @name login
 
 POST http://localhost:5030/api/users/login 
 Content-Type: application/json
 
+
 {
-"email": "al@smith.com",
-"password": "allan12345"
+"email": "restuser@domain.com",
+"password": "password123"
 }
 
 ###
+
+@authToken = {{login.response.body.token}}

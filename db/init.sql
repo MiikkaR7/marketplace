@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `listings` (
 INSERT INTO `listings` (`name`, `price`, `description`, `image`, `owner`) VALUES (
   'Muumimuki', 
   '30.99', 
-  'Harvinainen keräilyesine', 
+  'Harvinainen kerailyesine', 
   'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560',
   'ADMIN'
   );
