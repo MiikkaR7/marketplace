@@ -12,11 +12,11 @@ const loggedInUser = {
   };
 
   beforeAll(async () => {
-    pool.query('DELETE FROM users WHERE email=?', ['john.wayne@domain.com']);
+    pool.query('DELETE FROM users WHERE email=?', ['testuser@domain.com']);
 
     const data = {
-        name: 'John Wayne',
-        email: 'john.wayne@domain.com',
+        name: 'Test',
+        email: 'testuser@domain.com',
         password: 'password123'
       }
     
@@ -61,3 +61,36 @@ test('should return 200 and valid JSON', async () => {
   });
 
 });
+
+describe('POST listings endpoint', () => {
+    test('should create new listing', async () => {
+        const listing = {
+            name: 'Mariskooli',
+            price: 60.99,
+            description: 'Punainen mariskooli',
+            image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
+        };
+
+        const response = await request(app)
+        .post('/api/listings')
+        .set('Authorization', 'Bearer ' + loggedInUser.token)
+        .set('Accept','application/json')
+        .set('Content','application/json')
+        .send(listing);
+
+        expect(response.status).toEqual(201);
+        expect(response.headers['content-type']).toMatch(/json/);
+        expect(response.body.id).toBeTruthy();
+        expect(response.body.name).toEqual('Mariskooli');
+        expect(response.body.price).toEqual(60.99);
+        expect(response.body.description).toEqual('Punainen mariskooli');
+        expect(response.body.image).toEqual('https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg');
+        expect(response.body.owner).toEqual('TEMPUSER');
+    });
+
+});
+
+// End and close the pool 
+afterAll(async() => {
+    const result = await pool.end();
+    });
