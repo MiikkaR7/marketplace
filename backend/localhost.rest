@@ -20,6 +20,21 @@ Content-Type: application/json
 
 ###
 
+PUT http://localhost:5030/api/listings 
+Content-Type: application/json 
+
+{
+
+"id": 1,
+"name": "MuumimukiPUT",
+"price": 60.99,
+"description": "Yleinen kerailyesine",
+"image": "https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg"
+
+}
+
+###
+
 POST http://localhost:5030/api/users/signup 
 Content-Type: application/json
 

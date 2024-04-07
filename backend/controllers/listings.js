@@ -4,12 +4,20 @@ const listings = require('../models/listings');
 
 //Input validation
 
-const ListingSchema = Joi.object({
+const listingSchema = Joi.object({
     name: Joi.string().required().min(3),
     price: Joi.number().required().min(0),
     description: Joi.string().required().min(1),
-    image: Joi.string().min(1)
-})
+    image: Joi.string().required().min(1)
+});
+
+const updateSchema = Joi.object({
+    id: Joi.number().required().min(1),
+    name: Joi.string().required().min(3),
+    price: Joi.number().required().min(0),
+    description: Joi.string().required().min(1),
+    image: Joi.string().required().min(1),
+});
 
 //Get all listings
 
@@ -46,7 +54,7 @@ const createNewListing = async (req, res) => {
         }
 
 
-        const { error } = ListingSchema.validate(req.body);
+        const { error } = listingSchema.validate(req.body);
 
         if (error) {
             res.status(400).send(error.details[0].message);
@@ -63,7 +71,35 @@ const createNewListing = async (req, res) => {
             res.status(500).json({message: "Could not add the listing"});
         }
 
-    }   catch (error) {
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ message: error[0]});
+    }
+}
+
+const updateListingById = async (req, res) => {
+    try {
+
+        const { error } = updateSchema.validate(req.body);
+
+        if (error) {
+            res.status(400).json({ message: error.details[0].message});
+            return;
+        }
+
+        const listing = {
+            id: req.body.id,
+            name: req.body.name,
+            price: req.body.price,
+            description: req.body.description,
+            image: req.body.image
+        }
+
+        const response = await listings.updateListing(listing);
+        res.status(200).json({ message: "Listing updated"})
+    
+
+    } catch (error) {
         console.log(error);
         res.status(500).json({ message: error[0]});
     }
@@ -72,5 +108,6 @@ const createNewListing = async (req, res) => {
 
 module.exports = {
     getAllListings,
-    createNewListing
+    createNewListing,
+    updateListingById
   };
