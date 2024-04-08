@@ -1,9 +1,11 @@
 import React from "react";
 
+import './AddListing.css';
+
 const AddListing = () => {
     return (
         <>
-            <div>Add listing page</div>
+            <div className='add-listing-page'>Add listing page</div>
         </>
     )
 }

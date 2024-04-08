@@ -1,9 +1,11 @@
 import React from "react";
 
+import './Listings.css';
+
 const Listings = () => {
     return (
         <>
-            <div>Listings page</div>
+            <div className='listings-page'>Listings page</div>
         </>
     )
 }

@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Navigation from './shared/navigation/Navigation';
 import Listings from './listings/pages/Listings';
 import AddListing from './listings/pages/AddListing';
+import Authenticate from './users/pages/Authenticate';
 
 import './App.css'
 
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Listings />} />
         <Route path="/listings/new" element={<AddListing />} />
+        <Route path="/auth" element={<Authenticate />} />
         <Route path="/" render={() => <Redirect to="/" />} />
       </Routes>
     ); 
@@ -36,4 +38,4 @@ function App() {
 
 }
 
-export default App
+export default App;

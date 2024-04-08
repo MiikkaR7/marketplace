@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 //import Button from '../components/Button';
 
 
-//import './NavLinks.css'
+import './NavLinks.css'
 
 const NavLinks = (props) => {
 
@@ -15,10 +15,12 @@ return <ul className="nav-links">
     <li>
         <NavLink to="/" exact="true">ALL LISTINGS</NavLink>
     </li>
-        <NavLink to="/listings/new">LIST AN ITEM</NavLink>
-      <li>
-        <NavLink to="/auth">AUTHENTICATE</NavLink>
-      </li>
+    <li>
+        <NavLink to="/listings/new" exact="true">LIST AN ITEM</NavLink>
+    </li>
+    <li>
+        <NavLink to="/auth" exact="true">AUTHENTICATE</NavLink>
+    </li>
   </ul>
 
 }
