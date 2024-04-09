@@ -4,7 +4,6 @@
 }
 
 .auth__form {
-    position: relative;
     margin: auto;
     border: 1px solid black;
     width: 45%;
@@ -18,14 +17,13 @@
     text-align: right;
     font-size: larger;
     max-width: 18rem;
-    height: 17rem;
+    height: 20rem;
 }
 
 .auth__buttons {
-    position: absolute;
     display: flex;
     flex-direction: column;
+    width: 9rem;
     margin: auto;
-    margin-left: 34%;
-    width: 12rem;
 }
+

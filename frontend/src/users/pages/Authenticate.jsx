@@ -49,13 +49,15 @@ const Authenticate = (props) => {
 
     const onSubmitHandler = async event => {
         event.preventDefault();
+        console.log("Form submitted");
         if (isLoginMode) {
+        console.log(emailRef.current.value, passwordRef.current.value)
         logInUserMutation.mutate({
             email: emailRef.current.value,
             password: passwordRef.current.value,
         })
         } else {
-       //console.log(nameRef.current.value, emailRef.current.value, passwordRef.current.value)
+       console.log(nameRef.current.value, emailRef.current.value, passwordRef.current.value)
        signUpUserMutation.mutate({
         name: nameRef.current.value,
         email: emailRef.current.value,
@@ -77,13 +79,13 @@ const Authenticate = (props) => {
                         {!isLoginMode && <Input id="name" ref={nameRef} type="text" label="Name: "/>}
                         <Input id="email" ref={emailRef} type="text" label="Email Address: " />
                         <Input id="password" ref={passwordRef} type="password" label="Password: "/>
-                    </form>
                     <div className="auth__buttons">
-                        <Button type="submit" disable={signUpUserMutation.isLoading}>{isLoginMode ? 'LOGIN' : 'SIGN UP'}</Button>
-                        <Button inverse onClick={switchModeHandler}>
-                        {isLoginMode ? 'Sign up instead?' : 'Log in instead?'}
-                        </Button>
+                        <Button type="submit" disable={signUpUserMutation.isLoading}>{isLoginMode ? 'LOG IN' : 'SIGN UP'}</Button>
                     </div>
+                    </form>
+                    <Button inverse onClick={switchModeHandler}>
+                        {isLoginMode ? 'Sign up instead?' : 'Log in instead?'}
+                    </Button>
                 </div>
             </div>
         </>
