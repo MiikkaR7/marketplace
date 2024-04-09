@@ -3,8 +3,6 @@
 }
 
 .listing__image {
-    max-width: 23rem;
-    max-height: 23rem;
     position: relative;
 }
 
@@ -22,6 +20,8 @@
 }
 
 .listing__view {
+    height: 24rem;
+    width: 20rem;
     border: 1px solid black;
     margin-bottom: 1rem;
 }
@@ -41,7 +41,7 @@
     max-width: 17rem;
 }
 
-.listing__info h3 {
+.listing__info h2 {
     word-wrap: break-word;
 }
 

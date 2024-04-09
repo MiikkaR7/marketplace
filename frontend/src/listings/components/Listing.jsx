@@ -23,12 +23,9 @@ const Listing = props => {
             </div>
           </div>
           <div className="listing__info">
-            <h3>{props.name}</h3>
-            <p>{props.description}</p>
+            <h2>{props.name}</h2>
           </div>
           <div className="listing__buttons">
-            <Button>Edit</Button>
-            <Button danger>Delete</Button>
           </div>
         </div>
       </ListingView>
