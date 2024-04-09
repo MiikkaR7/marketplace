@@ -3,9 +3,13 @@ import React, { useContext, useState, useEffect } from "react";
 import ListingView from "../../shared/components/ListingView";
 import Button from "../../shared/components/Button";
 
+import { AuthContext } from "../../shared/context/auth-context";
+
 import './Listing.css';
 
 const Listing = props => {
+
+  const auth = useContext(AuthContext);
 
   return (
 
