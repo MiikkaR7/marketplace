@@ -1,5 +1,7 @@
-import { React, useState, useEffect } from "react";
-import { useQuery } from 'react-query'
+import { React, useState, useEffect, useContext } from "react";
+import { useQuery } from 'react-query';
+
+import { AuthContext } from "../../shared/context/auth-context";
 
 import { getAllListings } from "../api/listings";
 
@@ -7,6 +9,8 @@ import './Listings.css';
 import ListingsList from "../components/ListingsList";
 
 const MyListings = () => {
+
+    const auth = useContext(AuthContext);
 
     let Content;
 
@@ -20,10 +24,12 @@ const MyListings = () => {
 
     Content = <ListingsList items={data}/>
 
+    console.log(auth.userId);
+
     return (
         <>
-            <div className='listings-page'>{Content}</div>
-            <div>My listings</div>
+            <h1 className="my__listings__header">My listings</h1>
+            <div>{Content}</div>
         </>
     )
 }
