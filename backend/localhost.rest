@@ -12,10 +12,25 @@ Authorization: BEARER {{authToken}}
 
 {
 
-"name": "Mariskooli3",
-"price": 70.99,
+"name": "Mariskooli4Mariskooli4Marisk",
+"price": 75.99,
 "description": "Punainen mariskooli",
 "image": "https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg"
+
+}
+
+###
+
+POST http://localhost:5030/api/listings 
+Content-Type: application/json
+Authorization: BEARER {{authToken}} 
+
+{
+
+"name": "Muumimuki",
+"price": 30.99,
+"description": "Harvinainen kerailyesine",
+"image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560"
 
 }
 
