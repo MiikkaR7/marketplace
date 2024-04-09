@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 
 import ListingView from "../../shared/components/ListingView";
+import Button from "../../shared/components/Button";
 
 import './Listing.css';
 
@@ -22,8 +23,8 @@ const Listing = props => {
             <p>{props.description}</p>
           </div>
           <div className="listing__buttons">
-            <button>Edit</button>
-            <button>Delete</button>
+            <Button>Edit</Button>
+            <Button danger>Delete</Button>
           </div>
         </div>
       </ListingView>

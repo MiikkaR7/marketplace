@@ -6,24 +6,24 @@
     max-width: 23rem;
     max-height: 23rem;
     position: relative;
-    margin: 0 auto;
 }
 
 .listing__image img {
     width: 100%;
-    height: auto;
-    max-height: 17rem;
+    height: 17rem;
+    width: 17rem;
     border-bottom: 1px solid black;
 }
 
 .listing__list {
     list-style-type: none;
     margin-right: 1rem;
+    min-width: 20%;
 }
 
 .listing__view {
     border: 1px solid black;
-    width: 100%;
+    margin-bottom: 1rem;
 }
 
 .listing__price {
@@ -36,10 +36,18 @@
 
 .listing__info {
     text-align: left;
-    margin-left: 2rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: 17rem;
+}
+
+.listing__info h3 {
+    word-wrap: break-word;
 }
 
 .listing__buttons {
+    margin-left: 1rem;
     margin-bottom: 1rem;
 }
+
 
