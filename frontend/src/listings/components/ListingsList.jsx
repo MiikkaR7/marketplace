@@ -1,8 +1,9 @@
 import React from "react";
 import Listing from './Listing';
-//import './ListingsList.css';
+import './ListingsList.css';
+
 const ListingsList = props => {
-  return <ul className="listings-list">
+  return <ul className="listings__list">
     {props.items.map(listing => 
       <Listing
         id={listing.id} 

@@ -12,8 +12,8 @@ Authorization: BEARER {{authToken}}
 
 {
 
-"name": "Mariskooli2",
-"price": 60.99,
+"name": "Mariskooli3",
+"price": 70.99,
 "description": "Punainen mariskooli",
 "image": "https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg"
 
@@ -27,7 +27,7 @@ Authorization: BEARER {{authToken}}
 
 {
 
-"id": 1,
+"id": 8,
 "name": "Muumimuki",
 "price": 30.99,
 "description": "Harvinainen kerailyesine",
@@ -58,6 +58,11 @@ Content-Type: application/json
 "email": "restuser@domain.com",
 "password": "password123"
 }
+
+###
+
+GET http://localhost:5030/api/users/currentuser
+Content-Type: application/json
 
 ###
 
