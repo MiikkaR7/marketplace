@@ -1,0 +1,45 @@
+.listing__content {
+    padding: 0;
+}
+
+.listing__image {
+    max-width: 23rem;
+    max-height: 23rem;
+    position: relative;
+    margin: 0 auto;
+}
+
+.listing__image img {
+    width: 100%;
+    height: auto;
+    max-height: 17rem;
+    border-bottom: 1px solid black;
+}
+
+.listing__list {
+    list-style-type: none;
+    margin-right: 1rem;
+}
+
+.listing__view {
+    border: 1px solid black;
+    width: 100%;
+}
+
+.listing__price {
+    position: absolute;
+    bottom: 0rem;
+    left: 1.5rem;
+    text-align: left;
+    color: rgb(0, 0, 0);
+}
+
+.listing__info {
+    text-align: left;
+    margin-left: 2rem;
+}
+
+.listing__buttons {
+    margin-bottom: 1rem;
+}
+
