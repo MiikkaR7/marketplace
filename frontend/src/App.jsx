@@ -8,6 +8,7 @@ import Navigation from './shared/navigation/Navigation';
 import Listings from './listings/pages/Listings';
 import AddListing from './listings/pages/AddListing';
 import Authenticate from './users/pages/Authenticate';  
+import MyListings from './listings/pages/MyListings';
 
 import './App.css'
 
@@ -35,6 +36,7 @@ function App() {
     routes = (
       <Routes>
         <Route path="/" element={<Listings />} />
+        <Route path="/mylistings" element={<MyListings />} />
         <Route path="/listings/new" element={<AddListing />} />
         <Route path="/auth" element={<Authenticate />} />
         <Route path="/" render={() => <Redirect to="/" />} />
