@@ -1,17 +1,34 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from "react-query";
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
+
+import { AuthContext } from './shared/context/auth-context';
 
 import Navigation from './shared/navigation/Navigation';
 import Listings from './listings/pages/Listings';
 import AddListing from './listings/pages/AddListing';
-import Authenticate from './users/pages/Authenticate';
+import Authenticate from './users/pages/Authenticate';  
 
 import './App.css'
 
 const queryClient = new QueryClient();
 
 function App() {
+
+
+  const [token, setToken] = useState(false);
+  const [userId, setuser] = useState(false);
+
+  const login = useCallback((uid, token) => {
+    setToken(token);
+    setuser(uid);
+  },[]);
+
+  const logout = useCallback(() => {
+    setToken(null);
+    setuser(null);
+  },[]);
+
 
   let routes;
 
@@ -25,7 +42,16 @@ function App() {
     ); 
 
   return (
-    
+
+        <AuthContext.Provider
+          value={{ 
+            isLoggedIn: !!token, 
+            token: token, 
+            userId: userId, 
+            login: login, 
+            logout: logout
+        }}
+        >
           <QueryClientProvider client={queryClient}>
             <Router>
               <Navigation />
@@ -34,6 +60,7 @@ function App() {
               </main>
             </Router>
           </QueryClientProvider>
+        </AuthContext.Provider>
       );
 
 }
