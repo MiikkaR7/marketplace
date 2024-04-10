@@ -105,9 +105,27 @@ const updateListingById = async (req, res) => {
     }
 }
 
+const deleteListing = async (req, res) => {
+    try {
+        
+        const id = parseInt(req.params.id);
+        const response = await listings.deleteListingById(id);
+
+        if (response.affectedRows === 1) {
+            res.status(200).json({message: "Listing deleted succesfully"});
+        } else {
+            res.status(400).json({message: "Listing not found"});
+        }
+
+    } catch (error) {
+        res.status(500).json(error.message);
+    }
+}
+
 
 module.exports = {
     getAllListings,
     createNewListing,
-    updateListingById
+    updateListingById,
+    deleteListing
   };

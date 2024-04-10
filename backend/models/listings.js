@@ -58,6 +58,17 @@ const listings = {
       } catch (error) {
       throw new Error(error);
       }
+    },
+    deleteListingById: async(id) => {
+      const deleteQuery = 'DELETE FROM `listings` WHERE id=?';
+      try {
+        const connection = await pool.getConnection();
+        const [results] = await connection.query(deleteQuery, [id]);
+        connection.release();
+        return results;
+      } catch (error) {
+      throw new Error(error);
+      }
     }
 }
 
