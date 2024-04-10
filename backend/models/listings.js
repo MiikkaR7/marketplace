@@ -36,6 +36,19 @@ const listings = {
         throw new Error(error);
     }
   },
+  findListingByOwner: async (owner) => {
+    try {
+        const connection = await pool.getConnection();
+        const [results] = await connection.query(
+            'SELECT * FROM `listings` WHERE `owner`=?',[owner]
+        );
+        connection.release();
+        return results;
+
+    } catch (error) {
+        throw new Error(error);
+    }
+  },
   findByListing: async (listing) => {
     try {
         const connection = await pool.getConnection();
