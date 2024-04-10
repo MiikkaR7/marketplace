@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllListings, createNewListing, updateListingById, deleteListing, getListingById } = require('../controllers/listings');
+const { getAllListings, createNewListing, updateListingById, deleteListing, getListingById, getListingsbyOwner } = require('../controllers/listings');
 const verifyToken = require('../middleware/verifyToken');
 
 const router = express.Router();
@@ -9,6 +9,7 @@ router.get('/:id', getListingById);
 
 router.use(verifyToken);
 
+router.get('/mylistings/:owner', getListingsbyOwner);
 router.post('/', createNewListing);
 router.put('/', updateListingById);
 router.delete('/:id', deleteListing);
