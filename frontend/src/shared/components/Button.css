@@ -1,13 +1,12 @@
 .button {
     font: inherit;
-    padding: 0.5rem 1.5rem;
+    padding: 0;
     border: 1px solid #000000;
     border-radius: 4px;
-    background: #4d0505;
-    color: white;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
     cursor: pointer;
-    margin-top: 1rem;
-    margin-right: 1rem;
+    margin: auto;
     text-decoration: none;
     display: inline-block;
   }
@@ -17,7 +16,7 @@
   .button:hover,
   .button:active {
     background: #610505;
-    border-color: #ffffff;
+    border-color: #000000;
   }
   .button--inverse {
     background: transparent;
@@ -41,7 +40,7 @@
   .button:disabled,
   .button:hover:disabled,
   .button:active:disabled {
-    background: #ccc;
+    background: #ff0000;
     color: #979797;
     border-color: #ccc;
     cursor: not-allowed;

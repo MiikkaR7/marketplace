@@ -7,21 +7,10 @@
 }
 
 .nav-links li {
-    color: white;
     margin: 2rem;
-    border: 1px solid black;
-    background-color: white;
-}
-
-.nav-links button {
-    border: 1px solid white;
-    color: white;
-    background: transparent;
 }
 
 .nav-links a {
-    border: 1px solid transparent;
-    color: #292929;
+    padding: 1rem;
     text-decoration: none;
-    padding: 0.5rem;
 }
