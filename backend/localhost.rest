@@ -6,6 +6,10 @@ GET http://localhost:5030/api/listings
 
 ###
 
+GET http://localhost:5030/api/listings/1
+
+###
+
 POST http://localhost:5030/api/listings 
 Content-Type: application/json
 Authorization: BEARER {{authToken}} 
@@ -27,7 +31,7 @@ Authorization: BEARER {{authToken}}
 
 {
 
-"name": "Muumimuki",
+"name": "Muumimuki3",
 "price": 30.99,
 "description": "Harvinainen kerailyesine",
 "image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560"
@@ -49,6 +53,13 @@ Authorization: BEARER {{authToken}}
 "image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560"
 
 }
+
+###
+
+DELETE http://localhost:5030/api/listings/13 
+Content-Type: application/json
+Authorization: BEARER {{authToken}} 
+
 
 ###
 
