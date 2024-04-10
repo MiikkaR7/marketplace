@@ -33,6 +33,21 @@ const getAllListings = async (req, res) => {
 
 }
 
+//Get listing by id
+
+const getListingById = async (req, res) => {
+    try {
+        const id = parseInt(req.params.id);
+        const response = await listings.findListingById(id);
+        if (response) {
+            res.status(200).json(response);
+        }
+    } catch (error) {
+        res.status(500).json("Something went wrong");
+    }
+
+}
+
 //Create new listing
 
 const createNewListing = async (req, res) => {
@@ -118,7 +133,7 @@ const deleteListing = async (req, res) => {
         }
 
     } catch (error) {
-        res.status(500).json(error.message);
+        res.status(500).json("Something went wrong");
     }
 }
 
@@ -127,5 +142,6 @@ module.exports = {
     getAllListings,
     createNewListing,
     updateListingById,
-    deleteListing
+    deleteListing,
+    getListingById
   };
