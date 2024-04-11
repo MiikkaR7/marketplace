@@ -1,0 +1,59 @@
+GET http://172.16.4.202:5030/health
+
+###
+
+GET http://172.16.4.202:5030/api/listings
+
+###
+
+GET http://172.16.4.202:5030/api/listings/1
+
+###
+
+POST http://172.16.4.202:5030/api/listings 
+Content-Type: application/json
+Authorization: BEARER {{authToken}} 
+
+{
+
+"name": "Muumimuki",
+"price": 29.99,
+"description": "Harvinainen muumimuki",
+"image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560"
+
+}
+
+###
+
+//SIGN UP + LOG IN -------------------------------------------------------------------------------------------------
+
+POST http://172.16.4.202:5030/api/users/signup 
+Content-Type: application/json
+
+{
+"name": "Restuser",
+"email": "restuser@domain.com",
+"password": "password123"
+}
+
+###
+
+# @name login
+
+POST http://172.16.4.202:5030/api/users/login 
+Content-Type: application/json
+
+
+{
+"email": "restuser@domain.com",
+"password": "password123"
+}
+
+###
+
+GET http://172.16.4.202:5030/api/users/currentuser
+Content-Type: application/json
+
+###
+
+@authToken = {{login.response.body.token}}
