@@ -1,8 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 
-
-
-//import './Listing.css';
+import './ListingView.css';
 
 const ListingView = props => {
 
