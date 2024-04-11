@@ -15,7 +15,7 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_ROOT_HOST: '%'
     ports:
-      - '3306:3306'
+      - '3306:3307'
     volumes:
         - ./db/init.prod.sql:/docker-entrypoint-initdb.d/init.prod.sql
         - mysql_data:/var/lib/mysql
