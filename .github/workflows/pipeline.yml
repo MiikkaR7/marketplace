@@ -1,5 +1,5 @@
 name: CI/CD
-#test change
+#test change2
 on:
   push:
     branches-ignore:
@@ -34,10 +34,10 @@ jobs:
       - name: Configure the MySQL server
         run:  |
           mysql -u root -h 127.0.0.1 -e 'SELECT version()'
-          mysql -h 127.0.0.1 -P 3307 -u root -e 'CREATE DATABASE test_db;'
-          mysql -h 127.0.0.1 -P 3307 -u root -e 'SHOW DATABASES;'
-          mysql -h 127.0.0.1 -P 3307 -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';"
-          mysql -h 127.0.0.1 -P 3307 -u root -e 'FLUSH PRIVILEGES' -ppassword
+          mysql -h 127.0.0.1 -P 3306 -u root -e 'CREATE DATABASE test_db;'
+          mysql -h 127.0.0.1 -P 3306 -u root -e 'SHOW DATABASES;'
+          mysql -h 127.0.0.1 -P 3306 -u root -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';"
+          mysql -h 127.0.0.1 -P 3306 -u root -e 'FLUSH PRIVILEGES' -ppassword
 
       - name: Seed the database
         working-directory: ./db
