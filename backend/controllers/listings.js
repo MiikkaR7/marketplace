@@ -108,6 +108,8 @@ const createNewListing = async (req, res) => {
     }
 }
 
+//Update listing
+
 const updateListingById = async (req, res) => {
     try {
 
@@ -135,6 +137,8 @@ const updateListingById = async (req, res) => {
         res.status(500).json({ message: error[0]});
     }
 }
+
+//Delete listing
 
 const deleteListing = async (req, res) => {
     try {

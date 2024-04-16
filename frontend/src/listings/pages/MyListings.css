@@ -4,6 +4,11 @@
 }
 
 .my__listings__header {
-    margin-top: 8rem;
+    text-align: left;
+    margin-top: 6rem;
     color: black;
+    padding-bottom: 1rem;
+    border-bottom-color: rgb(199, 199, 199);
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
 }

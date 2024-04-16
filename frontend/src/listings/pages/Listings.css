@@ -1,9 +1,18 @@
-.listings-page {
-    margin-top: 8rem;
+.listings__page {
+    margin-top: 3rem;
     font-size: larger;
 }
 
-.my__listings__header {
+.listings__header {
+    text-align: left;
     margin-top: 8rem;
     color: black;
+}
+
+.listings__tip {
+    text-align: left;
+    padding-bottom: 1rem;
+    border-bottom-color: rgb(199, 199, 199);
+    border-bottom-width: 4px;
+    border-bottom-style: solid;
 }

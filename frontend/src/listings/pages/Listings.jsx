@@ -22,7 +22,9 @@ const Listings = () => {
 
     return (
         <>
-            <div className='listings-page'>{Content}</div>
+            <h1 className="listings__header">All Marketplace listings</h1>
+            <h3 className="listings__tip">Click on an item to see detailed information</h3>
+            <div className="listings__page">{Content}</div>
         </>
     )
 }

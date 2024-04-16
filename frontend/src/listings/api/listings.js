@@ -73,3 +73,17 @@ export const updateListing = async ({id, name, price, description, image, token}
   );
   return await res.json();
 };
+
+export const deleteListingById = async ({id, token}) => {
+  const res = await fetch(
+    `http://localhost:5030/api/listings/${id}`, 
+    {
+      method: 'DELETE',
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+    })
+
+    return await res.json();
+};
