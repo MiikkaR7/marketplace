@@ -69,7 +69,7 @@ describe('POST listings endpoint', () => {
             price: 60.99,
             description: 'Punainen mariskooli',
             image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
-            owner: 'ADMIN'
+            owner: 'ADMIN-0000-0000-0000-000000000000000'
         };
 
         const response = await request(app)
