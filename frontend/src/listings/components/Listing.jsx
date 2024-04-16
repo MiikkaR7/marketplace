@@ -26,7 +26,7 @@ const Listing = props => {
     <ViewListingModal className="listing__modal"  
         show={showListingModal}
         header={[props.name + ", ", props.price + " €"]} 
-        description={"Description: " + props.description}
+        description={props.description}
         img={props.image}
         onClick={hideListingHandler}
         footerClass="place-item__modal-actions"

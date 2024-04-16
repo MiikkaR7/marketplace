@@ -15,14 +15,15 @@
 
 .listing__list {
     list-style-type: none;
+    height: 30rem;
     margin-right: 1rem;
     min-width: 20%;
 }
 
-.listing__view {
-    height: 24rem;
+.my__listing__view {
     width: 20rem;
-    border: 1px solid black;
+    height: 28rem;
+    border: 1px solid rgb(0, 0, 0);
     margin-bottom: 1rem;
 }
 
@@ -32,6 +33,8 @@
     left: 1.5rem;
     text-align: left;
     color: rgb(0, 0, 0);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(255, 255, 255);
 }
 
 .listing__info {
