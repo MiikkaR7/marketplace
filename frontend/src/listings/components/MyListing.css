@@ -1,0 +1,54 @@
+.listing__content {
+    padding: 0;
+}
+
+.listing__image {
+    position: relative;
+}
+
+.listing__image img {
+    width: 100%;
+    height: 17rem;
+    width: 17rem;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+
+.listing__list {
+    list-style-type: none;
+    margin-right: 1rem;
+    min-width: 20%;
+}
+
+.listing__view {
+    height: 24rem;
+    width: 20rem;
+    border: 1px solid black;
+    margin-bottom: 1rem;
+}
+
+.listing__price {
+    position: absolute;
+    bottom: 0rem;
+    left: 1.5rem;
+    text-align: left;
+    color: rgb(0, 0, 0);
+}
+
+.listing__info {
+    text-align: left;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    max-width: 17rem;
+}
+
+.listing__info h2 {
+    word-wrap: break-word;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.listing__buttons {
+    margin-left: 1rem;
+}
+
+

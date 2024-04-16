@@ -40,7 +40,7 @@ const getListingById = async (req, res) => {
         const id = parseInt(req.params.id);
         const response = await listings.findListingById(id);
         if (response) {
-            res.status(200).json(response);
+            res.status(200).json(response[0]);
         }
     } catch (error) {
         res.status(500).json("Something went wrong");
