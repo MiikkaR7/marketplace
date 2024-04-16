@@ -16,6 +16,10 @@ import './EditListing.css';
 
 const EditListing = (props) => {
 
+  const auth = useContext(AuthContext);
+  
+  let Content;
+
   let navigate = useNavigate();
 
   const toMyListings = () => {
@@ -53,8 +57,6 @@ const EditListing = (props) => {
   const descriptionRef = useRef();
   const imageRef = useRef();
 
-  const auth = useContext(AuthContext);
-
   const updateListingMutation = useMutation({
     mutationFn: updateListing
   });
@@ -75,7 +77,12 @@ const EditListing = (props) => {
     navigate('/');
   };
 
-  return (
+  if (auth.isLoggedIn == false || auth.userId != listingData.owner) {
+    Content = "401 Unauthorized";
+  }
+
+  if (auth.isLoggedIn == true && auth.userId == listingData.owner) {
+    Content =
     <div className="edit__page">
     <form className='listing__form' onSubmit={ListingSubmitHandler}>
       <Input id="name" ref={nameRef} defaultValue={listingData.name} type="text" label="Listing Name" />
@@ -90,6 +97,10 @@ const EditListing = (props) => {
       </Button>
     </form>
     </div>
+  }
+
+  return (
+    <div className="edit__page">{Content}</div>
   )
 };
 export default EditListing;
