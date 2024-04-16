@@ -17,12 +17,10 @@ let Content;
 const storedData = JSON.parse(localStorage.getItem('userData'));
 
 if (!storedData) {
-    Content = "User data not found in localStorage";
+    Content = "You are not logged in";
   } else {
     const { userId, token } = storedData;
 
-
-  console.log("Authenticated user:" + auth.userId, auth.token);
 
   const { isLoading, error, data } = useQuery("listingsData", () =>getListingsbyOwner({owner: userId, token: token}));
 

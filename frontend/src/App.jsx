@@ -9,6 +9,7 @@ import Listings from './listings/pages/Listings';
 import AddListing from './listings/pages/AddListing';
 import Authenticate from './users/pages/Authenticate';  
 import MyListings from './listings/pages/MyListings';
+import EditListing from './listings/pages/EditListing';
 
 import './App.css'
 
@@ -78,6 +79,7 @@ function App() {
         <Route path="/mylistings" element={<MyListings />} />
         <Route path="/listings/new" element={<AddListing />} />
         <Route path="/auth" element={<Authenticate />} />
+        <Route path="/listings/:id" element={<EditListing />}/>
         <Route path="/" render={() => <Redirect to="/" />} />
       </Routes>
     ); 

@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import ListingView from "../../shared/components/ListingView";
 import Button from "../../shared/components/Button";
@@ -10,6 +11,13 @@ import './MyListing.css';
 const MyListing = props => {
 
   const auth = useContext(AuthContext);
+
+  let navigate = useNavigate();
+
+  const toUpdatePage = () => {
+    console.log();
+    navigate("/listings/" + props.id);
+  }
 
   return (
 
@@ -26,8 +34,8 @@ const MyListing = props => {
             <h2>{props.name}</h2>
           </div>
           <div className="listing__buttons">
-            <button>Edit</button>
-            <button danger>Delete</button>
+            <Button onClick={toUpdatePage}>Edit</Button>
+            <Button danger>Delete</Button>
           </div>
         </div>
       </ListingView>
