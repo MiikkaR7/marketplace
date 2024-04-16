@@ -12,6 +12,7 @@ const ListingsList = props => {
         price={listing.price}
         description={listing.description}
         image={listing.image}
+        owner={listing.owner}
       />
     )}
     </ul>
