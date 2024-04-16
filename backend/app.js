@@ -8,7 +8,9 @@ app.use(express.json());
 app.use(cors({
     origin: [
       'http://localhost:5172',
-      'http://localhost:5030'
+      'http://localhost:5030',
+      'http://172.16.4.202:8080',
+      'http://172.16.4.202:90'
     ]
   }));
 

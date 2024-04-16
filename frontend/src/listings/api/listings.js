@@ -7,7 +7,7 @@ export const getAllListings = async () => {
 
 export const getListingById = async (id) => {
     const res = await fetch(
-      `http://localhost:5030/api/listings/${id}`
+      `${import.meta.env.VITE_API_URL}/api/listings/${id}`
     );
     return await res.json();
   };
@@ -16,7 +16,7 @@ export const getListingsbyOwner = async ({owner, token}) => {
   console.log(owner);
   console.log(token);
   const res = await fetch(
-    `http://localhost:5030/api/listings/mylistings/${owner}`, 
+    `${import.meta.env.VITE_API_URL}/api/listings/mylistings/${owner}`, 
     {
       headers: {
         'Accept': 'application/json',
@@ -31,7 +31,7 @@ export const getListingsbyOwner = async ({owner, token}) => {
 export const createListing = async ({name, price, description, image, owner, token}) => {
   console.log(name, price, description, image);
   const res = await fetch(
-    `http://localhost:5030/api/listings`, 
+    `${import.meta.env.VITE_API_URL}/api/listings`, 
     {
       method: 'POST',
       headers: {
@@ -54,7 +54,7 @@ export const createListing = async ({name, price, description, image, owner, tok
 export const updateListing = async ({id, name, price, description, image, token}) => {
   console.log(id, name, price, description, image);
   const res = await fetch(
-    `http://localhost:5030/api/listings`, 
+    `${import.meta.env.VITE_API_URL}/api/listings`, 
     {
       method: 'PUT',
       headers: {
@@ -76,7 +76,7 @@ export const updateListing = async ({id, name, price, description, image, token}
 
 export const deleteListingById = async ({id, token}) => {
   const res = await fetch(
-    `http://localhost:5030/api/listings/${id}`, 
+    `${import.meta.env.VITE_API_URL}/api/listings/${id}`, 
     {
       method: 'DELETE',
       headers: {

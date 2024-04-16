@@ -6,6 +6,13 @@ services:
     env_file:
       - .env
     restart: always
+  frontend: 
+    image: ${FRONTEND_IMAGE}
+    ports:
+      - "80:90"
+    env_file:
+      - .env
+    restart: always
   db:
     image: mysql
     command: --default-authentication-plugin=mysql_native_password
