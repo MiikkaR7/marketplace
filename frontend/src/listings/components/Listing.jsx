@@ -16,12 +16,12 @@ const Listing = props => {
   const auth = useContext(AuthContext);
 
   const ListingClick = () => {
+    console.log(props.owner);
     setListingModal(true);
     console.log("Listing clicked");
   }
 
   return (
-
     <>
     <ViewListingModal className="listing__modal"  
         show={showListingModal}
@@ -32,7 +32,11 @@ const Listing = props => {
         footerClass="place-item__modal-actions"
         footer={
           <React.Fragment>
-            <Button >Add to Cart</Button>
+            {(auth.isLoggedIn && auth.userId != props.owner)
+            ? <Button>Add to Cart</Button>
+            : <p>Cannot purchase, check that you are logged in and not viewing your own listing</p>
+            }
+            
           </React.Fragment>
         }
       ></ViewListingModal>
