@@ -5,7 +5,7 @@ import './ListingView.css';
 const ListingView = props => {
 
   return (
-    <div className="listing__view">{props.children}</div>
+    <div className={`listing__view ${props.className}`} style={props.style}>{props.children}</div>
   )
 };
 export default ListingView;

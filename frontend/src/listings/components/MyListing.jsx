@@ -20,7 +20,7 @@ const MyListing = props => {
   return (
 
     <li className="listing__list">
-      <ListingView className="listing__view">
+      <ListingView className="my__listing__view">
         <div className="listing__content">
           <div className="listing__image">
             <img src={props.image} alt={props.description} />

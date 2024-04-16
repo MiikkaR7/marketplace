@@ -5,7 +5,7 @@ import { AuthContext } from "../../shared/context/auth-context";
 
 import { getListingsbyOwner } from "../api/listings";
 
-import './Listings.css';
+import './MyListings.css';
 import MyListingsList from "../components/MyListingsList";
 
 const MyListings = () => {
