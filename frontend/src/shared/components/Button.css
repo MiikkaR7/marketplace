@@ -20,7 +20,7 @@
   }
   .button--inverse {
     background: transparent;
-    color: #4285F4;
+    color: #ff0000;
   }
   .button--inverse:hover,
   .button--inverse:active {
