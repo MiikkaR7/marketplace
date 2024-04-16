@@ -6,12 +6,11 @@ import { AuthContext } from "../../shared/context/auth-context";
 import { getListingsbyOwner } from "../api/listings";
 
 import './Listings.css';
-import ListingsList from "../components/ListingsList";
+import MyListingsList from "../components/MyListingsList";
 
 const MyListings = () => {
 
 const auth = useContext(AuthContext);
-const [Data, setData] = useState('Your listings');
 
 let Content;
 
@@ -28,20 +27,25 @@ if (!storedData) {
   const { isLoading, error, data } = useQuery("listingsData", () =>getListingsbyOwner({owner: userId, token: token}));
 
     if (isLoading) return (
-    <div className="center">Loading listings...</div>
+    <div className="listings-page">Loading listings...</div>
     );
 
-    if (error) return "An error has occurred: " + error.message;
+    if (error) return (
+        <>
+            <div className="listings-page">An error has occurred:</div>
+            <div>{error.message}</div>
+        </>
+    );
 
-    Content = <ListingsList items={data}/>
+    Content = <MyListingsList items={data}/>
 
   }
 
   return (
-    <>
+    <div className="listings-page">
         <h1 className="my__listings__header">My listings</h1>
         <div>{Content}</div>
-    </>
+    </div>
     )
 
 }
