@@ -45,12 +45,12 @@ const AddListing = () => {
   return (
     <div className="add__listing__page">
     <form className='listing__form' onSubmit={ListingSubmitHandler}>
-      <Input id="name" ref={nameRef} type="text" label="Menu Item Name" />
-      <Input id="price" ref={priceRef} type="number" min="0" step="0.01" label="Menu Item Price"/>
-      <Input id="description" ref={descriptionRef} type="text" label="Menu Item Description"/>
-      <Input id="image" ref={imageRef} type="text" label="Menu Item Image"/>
-      <Button id="add-menu-item">
-      Submit Menu Item
+      <Input id="name" ref={nameRef} type="text" label="Listing Title" />
+      <Input id="price" ref={priceRef} type="number" min="0" step="0.01" label="Item Price"/>
+      <Input id="description" ref={descriptionRef} type="text" label="Item Description"/>
+      <Input id="image" ref={imageRef} type="text" label="Item Image"/>
+      <Button id="add-listing">
+      Submit Item
       </Button>
     </form>
     </div>

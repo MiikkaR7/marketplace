@@ -10,8 +10,6 @@ import './MyListing.css';
 
 const MyListing = props => {
 
-  const auth = useContext(AuthContext);
-
   let navigate = useNavigate();
 
   const toUpdatePage = () => {
