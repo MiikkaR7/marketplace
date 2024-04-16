@@ -51,14 +51,13 @@ jobs:
         run: echo "${{ secrets.ENV_FILE_PROD }}" > ./frontend/.env
 
       
-      #Frontend
-      #- name: Build the Frontend Image
-      #  uses: docker/build-push-action@v5.0.0
-      #  with:
-      #    context: ./frontend
-      #    file: ./frontend/Dockerfile
-      #    push: true
-      #    tags: "${{ env.REGISTRY }}/${{ env.FRONTEND_IMAGE_NAME }}"    
+      - name: Build the Frontend Image
+        uses: docker/build-push-action@v5.0.0
+        with:
+          context: ./frontend
+          file: ./frontend/Dockerfile
+          push: true
+          tags: "${{ env.REGISTRY }}/${{ env.FRONTEND_IMAGE_NAME }}"    
 
   deploy: 
     name: Server Deployment
@@ -108,9 +107,8 @@ jobs:
           cp db/init.prod.sql finalproject/db
           echo "${{ secrets.ENV_FILE_PROD }}" > finalproject/.env
           echo "BACKEND_IMAGE=${{ env.REGISTRY }}/${{ env.BACKEND_IMAGE_NAME }}" >> finalproject/.env
+          echo "FRONTEND_IMAGE=${{ env.REGISTRY}}/${{ env.FRONTEND_IMAGE_NAME }}" >> finalproject/.env
           rsync -r finalproject "${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_SERVER }}:./"
-
-        # ^^^ echo "FRONTEND_IMAGE=${{ env.REGISTRY}}/${{ env.FRONTEND_IMAGE_NAME }}" >> finalproject/.env
       
       - name: Start containers via SSH
         run:
