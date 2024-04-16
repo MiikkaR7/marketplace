@@ -41,7 +41,7 @@ jobs:
 
       - name: Seed the database
         working-directory: ./db
-        run: mysql -h 127.0.0.1 -P3307 -u root -ppassword test_db < init.sql
+        run: mysql -h 127.0.0.1 -P3306 -u root -ppassword test_db < init.sql
 
       - name: Create testing .env file from secret
         run: |
