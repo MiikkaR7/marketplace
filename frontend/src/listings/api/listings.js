@@ -4,3 +4,19 @@ export const getAllListings = async () => {
     );
     return await res.json();
   };
+
+export const getListingsbyOwner = async ({owner, token}) => {
+  console.log(owner);
+  console.log(token);
+  const res = await fetch(
+    `http://localhost:5030/api/listings/mylistings/${owner}`, 
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+    }
+  );
+  return await res.json();
+}
