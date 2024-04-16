@@ -13,14 +13,16 @@ import './AddListing.css';
 
 const AddListing = () => {
 
+  let Content;
+
+  const auth = useContext(AuthContext);
+
   let navigate = useNavigate();
 
   const nameRef = useRef();
   const priceRef = useRef();
   const descriptionRef = useRef();
   const imageRef = useRef();
-
-  const auth = useContext(AuthContext);
 
   const createListingMutation = useMutation({
     mutationFn: createListing
@@ -42,8 +44,13 @@ const AddListing = () => {
     navigate('/');
   };
 
-  return (
-    <div className="add__listing__page">
+  if (auth.isLoggedIn == false) {
+    Content = "401 Unauthorized";
+  }
+
+  if (auth.isLoggedIn == true) {
+    Content =
+    <div>
     <form className='listing__form' onSubmit={ListingSubmitHandler}>
       <Input id="name" ref={nameRef} type="text" label="Listing Title" />
       <Input id="price" ref={priceRef} type="number" min="0" step="0.01" label="Item Price"/>
@@ -54,6 +61,10 @@ const AddListing = () => {
       </Button>
     </form>
     </div>
+  }
+
+  return (
+    <div className="add__listing__page">{Content}</div>
   )
 };
 export default AddListing;
