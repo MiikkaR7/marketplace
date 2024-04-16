@@ -1,3 +1,7 @@
-.add-listing-page {
+.add__listing__page {
+    margin-top: 8rem;
+}
+
+.listing__form {
     margin-top: 8rem;
 }

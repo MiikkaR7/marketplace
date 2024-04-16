@@ -10,7 +10,7 @@ GET http://localhost:5030/api/listings/1
 
 ###
 
-GET http://localhost:5030/api/listings/mylistings/ADMIN
+GET http://localhost:5030/api/listings/mylistings/bf49461a-95be-45e8-8a56-17f7476a03a0
 Authorization: BEARER {{authToken}} 
 
 
@@ -22,7 +22,7 @@ Authorization: BEARER {{authToken}}
 
 {
 
-"name": "Mariskooli4Mariskooli4Marisk",
+"name": "Mariskooli",
 "price": 75.99,
 "description": "Punainen mariskooli",
 "image": "https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg"
@@ -37,7 +37,7 @@ Authorization: BEARER {{authToken}}
 
 {
 
-"name": "Muumimuki3",
+"name": "Muumimuki",
 "price": 30.99,
 "description": "Harvinainen kerailyesine",
 "image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560"
@@ -93,9 +93,5 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:5030/api/users/currentuser
-Content-Type: application/json
-
-###
 
 @authToken = {{login.response.body.token}}

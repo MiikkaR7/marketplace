@@ -28,6 +28,29 @@ export const getListingsbyOwner = async ({owner, token}) => {
   return await res.json();
 }
 
+export const createListing = async ({name, price, description, image, owner, token}) => {
+  console.log(name, price, description, image);
+  const res = await fetch(
+    `http://localhost:5030/api/listings`, 
+    {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+      body: JSON.stringify({
+        name,
+        price,
+        description,
+        image,
+        owner
+      })
+    }
+  );
+  return await res.json();
+};
+
 export const updateListing = async ({id, name, price, description, image, token}) => {
   console.log(id, name, price, description, image);
   const res = await fetch(
