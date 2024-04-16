@@ -69,6 +69,7 @@ describe('POST listings endpoint', () => {
             price: 60.99,
             description: 'Punainen mariskooli',
             image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
+            owner: 'ADMIN-0000-0000-0000-000000000000000'
         };
 
         const response = await request(app)
@@ -85,7 +86,7 @@ describe('POST listings endpoint', () => {
         expect(response.body.price).toEqual(60.99);
         expect(response.body.description).toEqual('Punainen mariskooli');
         expect(response.body.image).toEqual('https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg');
-        expect(response.body.owner).toEqual('TEMPUSER');
+        expect(response.body.owner).toEqual('ADMIN-0000-0000-0000-000000000000000');
     });
 
 });

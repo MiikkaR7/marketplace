@@ -8,7 +8,8 @@ const listingSchema = Joi.object({
     name: Joi.string().required().min(3).max(27),
     price: Joi.number().required().min(0),
     description: Joi.string().required().min(1),
-    image: Joi.string().required().min(1)
+    image: Joi.string().required().min(1),
+    owner: Joi.string().required().min(36),
 });
 
 const updateSchema = Joi.object({
@@ -73,7 +74,7 @@ const createNewListing = async (req, res) => {
             price: req.body.price,
             description: req.body.description,
             image: req.body.image,
-            owner: "TEMPUSER"
+            owner: req.body.owner
         }
 
         

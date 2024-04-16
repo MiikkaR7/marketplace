@@ -70,7 +70,7 @@ const EditListing = (props) => {
       token: auth.token
     })
 
-    //force page to refresh (maybe better approach?)
+    //force page to refresh with invalid request(maybe better approach?)
     await updateListing(id);
     navigate('/');
   };
