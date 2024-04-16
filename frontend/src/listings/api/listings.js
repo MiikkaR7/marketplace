@@ -1,6 +1,6 @@
 export const getAllListings = async () => {
     const res = await fetch(
-      `http://localhost:5030/api/listings`
+      `${import.meta.env.VITE_API_URL}/api/listings`
     );
     return await res.json();
   };
