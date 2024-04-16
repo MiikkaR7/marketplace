@@ -20,9 +20,10 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_TCP_PORT: 3307
       MYSQL_ROOT_HOST: '%'
     ports:
-      - '3307:3306'
+      - '3307:3307'
     volumes:
         - ./db/init.prod.sql:/docker-entrypoint-initdb.d/init.prod.sql
         - mysql_data:/var/lib/mysql
