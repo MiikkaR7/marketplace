@@ -31,7 +31,7 @@ const loggedInUser = {
 });
 
 describe('GET listings items endpoint', () => {
-    test('should return 200', (done) => {
+    test('should fetch all listings and return 200', (done) => {
         request(app)
         .get('/api/listings')
         .expect(200)
@@ -39,37 +39,64 @@ describe('GET listings items endpoint', () => {
     });
 
     
-test('should return 200 and valid JSON', async () => {
-    const response = await request(app)
-        .get('/api/listings')
-        .set('Accept', 'application/json');
+    test('should fetch all listings and return 200 and valid JSON', async () => {
+        const response = await request(app)
+            .get('/api/listings')
+            .set('Accept', 'application/json');
 
-    expect(response.status).toEqual(200);
-    expect(response.headers['content-type']).toMatch(/json/);
-    expect(response.body).toEqual(
-      expect.arrayContaining([
-        expect.objectContaining({
-            id: 1,
-            name: 'Muumimuki',
-            price: 30.99,
-            description: 'Harvinainen kerailyesine',
-            image: 'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560',
-            owner: 'ADMIN'
-        }),
-      ]),
-    );
-  });
+        expect(response.status).toEqual(200);
+        expect(response.headers['content-type']).toMatch(/json/);
+        expect(response.body).toEqual(
+          expect.arrayContaining([
+            expect.objectContaining({
+                id: 1,
+               name: 'Muumimuki',
+                price: 30.99,
+                description: 'Harvinainen kerailyesine',
+                image: 'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560',
+                owner: 'ADMIN-0000-0000-0000-000000000000000'
+            }),
+          ]),
+        );
+    });
+
+    test('should fetch single listing and return 200 and valid JSON', async () => {
+      const response = await request(app)
+          .get('/api/listings/1')
+          .set('Accept', 'application/json');
+
+      expect(response.status).toEqual(200);
+      expect(response.headers['content-type']).toMatch(/json/);
+      expect(response.body).toEqual(
+          expect.objectContaining({
+              id: 1,
+              name: 'Muumimuki',
+              price: 30.99,
+              description: 'Harvinainen kerailyesine',
+              image: 'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560',
+              owner: 'ADMIN-0000-0000-0000-000000000000000'
+          }),
+      );
+    });
+
+    test('should not fetch listing that doesnt exist and return 400', async () => {
+      const response = await request(app)
+          .get('/api/listings/999')
+          .set('Accept', 'application/json');
+
+      expect(response.status).toEqual(400);
+    });
 
 });
 
 describe('POST listings endpoint', () => {
-    test('should create new listing', async () => {
+    test('should create new listing and return 201', async () => {
         const listing = {
-            name: 'Mariskooli',
-            price: 60.99,
-            description: 'Punainen mariskooli',
-            image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
-            owner: 'ADMIN-0000-0000-0000-000000000000000'
+          name: 'Mariskooli',
+          price: 60.99,
+          description: 'Punainen mariskooli',
+          image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
+          owner: 'ADMIN-0000-0000-0000-000000000000000'
         };
 
         const response = await request(app)
@@ -87,6 +114,148 @@ describe('POST listings endpoint', () => {
         expect(response.body.description).toEqual('Punainen mariskooli');
         expect(response.body.image).toEqual('https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg');
         expect(response.body.owner).toEqual('ADMIN-0000-0000-0000-000000000000000');
+    });
+
+    test('should not create listing with empty name and return 400', async () => {
+      const listing = {
+        name: '',
+        price: 60.99,
+        description: 'Punainen mariskooli',
+        image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
+        owner: 'TEST1-0000-0000-0000-000000000000000'
+      };
+
+      const response = await request(app)
+      .post('/api/listings')
+      .set('Authorization', 'Bearer ' + loggedInUser.token)
+      .set('Accept','application/json')
+      .set('Content','application/json')
+      .send(listing);
+
+      expect(response.status).toEqual(400);
+    });
+
+    test('should not create listing with no name and return 400', async () => {
+      const listing = {
+        price: 60.99,
+        description: 'Punainen mariskooli',
+        image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
+        owner: 'TEST1-0000-0000-0000-000000000000000'
+      };
+
+      const response = await request(app)
+      .post('/api/listings')
+      .set('Authorization', 'Bearer ' + loggedInUser.token)
+      .set('Accept','application/json')
+      .set('Content','application/json')
+      .send(listing);
+
+      expect(response.status).toEqual(400);
+    });
+
+    test('should not create listing with no price and return 400', async () => {
+      const listing = {
+        name: 'Testiesine',
+        description: 'Testiesine',
+        image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
+        owner: 'TEST1-0000-0000-0000-000000000000000'
+      };
+
+      const response = await request(app)
+      .post('/api/listings')
+      .set('Authorization', 'Bearer ' + loggedInUser.token)
+      .set('Accept','application/json')
+      .set('Content','application/json')
+      .send(listing);
+
+      expect(response.status).toEqual(400);
+    });
+      
+
+});
+
+describe('PUT listings endpoint', () => {
+    test('should update listing and return 201', async () => {
+      const listing = {
+        id: 1,
+        name: 'Testiesine',
+        price: 39.99,
+        description: 'Testiesine',
+        image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
+      };
+
+      const response = await request(app)
+      .put('/api/listings')
+      .set('Authorization', 'Bearer ' + loggedInUser.token)
+      .set('Accept','application/json')
+      .set('Content','application/json')
+      .send(listing);
+
+      expect(response.status).toEqual(201);
+      expect(response.headers['content-type']).toMatch(/json/);
+      expect(response.body.message).toEqual('Listing updated');
+    });
+
+    test('should update multiple fields and return 201', async () => {
+      const restoreListing = {
+        id: 1,
+        name: 'Muumimuki',
+        price: 30.99,
+        description: 'Harvinainen kerailyesine',
+        image: 'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560',
+      };
+
+      const response = await request(app)
+      .put('/api/listings')
+      .set('Authorization', 'Bearer ' + loggedInUser.token)
+      .set('Accept','application/json')
+      .set('Content','application/json')
+      .send(restoreListing);
+
+      expect(response.status).toEqual(201);
+      expect(response.headers['content-type']).toMatch(/json/);
+      expect(response.body.message).toEqual('Listing updated');
+
+    });
+
+    test('should not update with empty fields and return 400', async () => {
+      const restoreListing = {
+        id: 1,
+        name: '',
+        price: 30.99,
+        description: '',
+        image: 'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560',
+      };
+
+      const response = await request(app)
+      .put('/api/listings')
+      .set('Authorization', 'Bearer ' + loggedInUser.token)
+      .set('Accept','application/json')
+      .set('Content','application/json')
+      .send(restoreListing);
+
+      expect(response.status).toEqual(400);
+      expect(response.headers['content-type']).toMatch(/json/);
+
+    });
+
+    test('should not update with missing fields and return 400', async () => {
+      const restoreListing = {
+        id: 1,
+        price: 30.99,
+        image: 'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560',
+      };
+
+      const response = await request(app)
+      .put('/api/listings')
+      .set('Authorization', 'Bearer ' + loggedInUser.token)
+      .set('Accept','application/json')
+      .set('Content','application/json')
+      .send(restoreListing);
+
+      expect(response.status).toEqual(400);
+      expect(response.headers['content-type']).toMatch(/json/);
+
     });
 
 });
