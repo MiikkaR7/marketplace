@@ -40,8 +40,11 @@ const getListingById = async (req, res) => {
     try {
         const id = parseInt(req.params.id);
         const response = await listings.findListingById(id);
-        if (response) {
+        if (response.length === 1) {
             res.status(200).json(response[0]);
+        }
+        else {
+            res.status(400).json("Listing does not exist");
         }
     } catch (error) {
         res.status(500).json("Something went wrong");
@@ -129,7 +132,7 @@ const updateListingById = async (req, res) => {
         }
 
         const response = await listings.updateListing(listing);
-        res.status(200).json({ message: "Listing updated"})
+        res.status(201).json({ message: "Listing updated"})
     
 
     } catch (error) {

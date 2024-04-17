@@ -6,7 +6,7 @@ GET http://172.16.4.202:5030/api/listings
 
 ###
 
-GET http://172.16.4.202:5030/api/listings/1
+GET http://172.16.4.202:5030/api/listings/10
 
 ###
 

@@ -15,7 +15,7 @@ INSERT INTO `listings` (`name`, `price`, `description`, `image`, `owner`) VALUES
   '30.99', 
   'Harvinainen kerailyesine', 
   'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560',
-  'ADMIN'
+  'ADMIN-0000-0000-0000-000000000000000'
   );
 CREATE TABLE IF NOT EXISTS `users` (
   `id` VARCHAR(36) NOT NULL,
