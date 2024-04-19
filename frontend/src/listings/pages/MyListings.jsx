@@ -25,24 +25,40 @@ if (!storedData) {
   const { isLoading, error, data } = useQuery("listingsData", () =>getListingsbyOwner({owner: userId, token: token}));
 
     if (isLoading) return (
-    <div className="listings-page">Loading listings...</div>
+    <div className="listings__page">Loading listings...</div>
     );
 
     if (error) return (
         <>
-            <div className="listings-page">An error has occurred:</div>
+            <div className="listings__page">An error has occurred:</div>
             <div>{error.message}</div>
         </>
     );
 
-    Content = <MyListingsList items={data}/>
+  console.log(data.length);
+
+
+    if (data.length < 1) return (
+      <div className="listings__page">
+        <h1 className="my__listings__header">My listings</h1>
+        <h2>You have no listings</h2>
+      </div>
+  )
+
+  if (data.length > 0) return (
+    <div className="listings__page">
+      <h1 className="my__listings__header">My listings</h1>
+      <MyListingsList items={data}/>
+    </div>
+)
+
+
 
   }
 
   return (
-    <div className="listings-page">
+    <div className="listings__page">
         <h1 className="my__listings__header">My listings</h1>
-        <div>{Content}</div>
     </div>
     )
 
