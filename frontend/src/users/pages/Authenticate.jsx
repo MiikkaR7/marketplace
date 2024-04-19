@@ -83,9 +83,11 @@ const Authenticate = (props) => {
                         <Button type="submit" disable={signUpUserMutation.isLoading}>{isLoginMode ? 'LOG IN' : 'SIGN UP'}</Button>
                     </div>
                     </form>
+                    <div className="auth__switch">
                     <Button inverse onClick={switchModeHandler}>
                         {isLoginMode ? 'Sign up instead?' : 'Log in instead?'}
                     </Button>
+                    </div>
                 </div>
             </div>
         </>

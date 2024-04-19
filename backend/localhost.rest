@@ -73,8 +73,8 @@ POST http://localhost:5030/api/users/signup
 Content-Type: application/json
 
 {
-"name": "Restuser",
-"email": "restuser@domain.com",
+"name": "Restuser2",
+"email": "restuser2@domain.com",
 "password": "password123"
 }
 
