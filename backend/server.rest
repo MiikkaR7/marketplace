@@ -6,7 +6,7 @@ GET http://172.16.4.202:5030/api/listings
 
 ###
 
-GET http://172.16.4.202:5030/api/listings/10
+GET http://172.16.4.202:5030/api/listings/1
 
 ###
 
@@ -48,11 +48,6 @@ Content-Type: application/json
 "email": "restuser@domain.com",
 "password": "password123"
 }
-
-###
-
-GET http://172.16.4.202:5030/api/users/currentuser
-Content-Type: application/json
 
 ###
 

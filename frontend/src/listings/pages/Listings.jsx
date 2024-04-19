@@ -13,19 +13,35 @@ const Listings = () => {
     const { isLoading, error, data } = useQuery("listingsData", () =>getAllListings());
 
     if (isLoading) return (
-    <div className="center">Loading listings...</div>
+    <h3 className="listings__page">Loading listings...</h3>
     );
 
-    if (error) return "An error has occurred: " + error.message;
+    if (error) return (
+        <div className="listings__page">
+            <h2>Error fetching listings</h2>
+        </div>
+    )
+
+    if (data.length < 1) return (
+        <div className="listings__page">
+          <h1 className="listings__header">All Marketplace listings</h1>
+          <h3 className="listings__tip">Click on an item to see detailed information</h3>
+          <h2>There are currently no listings</h2>
+        </div>
+    )
+  
+    if (data.length > 0) return (
+      <div className="listings__page">
+        <h1 className="listings__header">All Marketplace listings</h1>
+        <h3 className="listings__tip">Click on an item to see detailed information</h3>
+        <ListingsList items={data}/>
+      </div>
+  )
 
     Content = <ListingsList items={data}/>
 
     return (
-        <>
-            <h1 className="listings__header">All Marketplace listings</h1>
-            <h3 className="listings__tip">Click on an item to see detailed information</h3>
-            <div className="listings__page">{Content}</div>
-        </>
+    <></>
     )
 }
 

@@ -3,6 +3,11 @@
     font-size: larger;
 }
 
+.listings__page__error main {
+    margin-top: 3rem;
+    font-size: larger;
+}
+
 .listings__header {
     text-align: left;
     margin-top: 8rem;
