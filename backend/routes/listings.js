@@ -1,11 +1,12 @@
 const express = require('express');
-const { getAllListings, createNewListing, updateListingById, deleteListing, getListingById, getListingsbyOwner } = require('../controllers/listings');
+const { getAllListings, createNewListing, updateListingById, deleteListing, getListingById, getListingsbyOwner, getListingsByName } = require('../controllers/listings');
 const verifyToken = require('../middleware/verifyToken');
 
 const router = express.Router();
 
 router.get('/', getAllListings);
 router.get('/:id', getListingById);
+router.get('/search/:name', getListingsByName);
 
 router.use(verifyToken);
 
