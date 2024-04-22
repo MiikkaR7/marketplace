@@ -62,7 +62,7 @@ const Listings = () => {
           <input
             className="search__bar"
             type="text"
-            placeholder="Search menu items..."
+            placeholder="Search listings..."
             value={searchTerm}
             onChange={handleChange}
           />
@@ -78,7 +78,7 @@ const Listings = () => {
         <input
             className="search__bar"
             type="text"
-            placeholder="Search menu items..."
+            placeholder="Search listings..."
             value={searchTerm}
             onChange={handleSearchChange}
         />
@@ -96,7 +96,7 @@ const Listings = () => {
         <input
             className="search__bar"
             type="text"
-            placeholder="Search menu items..."
+            placeholder="Search listings..."
             value={searchTerm}
             onChange={handleSearchChange}
         />

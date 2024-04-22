@@ -80,11 +80,11 @@ const Authenticate = (props) => {
                         <Input id="email" ref={emailRef} type="text" label="Email Address: " />
                         <Input id="password" ref={passwordRef} type="password" label="Password: "/>
                     <div className="auth__buttons">
-                        <Button type="submit" disable={signUpUserMutation.isLoading}>{isLoginMode ? 'LOG IN' : 'SIGN UP'}</Button>
+                        <Button id="formbutton" type="submit" disable={signUpUserMutation.isLoading}>{isLoginMode ? 'LOG IN' : 'SIGN UP'}</Button>
                     </div>
                     </form>
                     <div className="auth__switch">
-                    <Button inverse onClick={switchModeHandler}>
+                    <Button id="switchbutton" inverse onClick={switchModeHandler}>
                         {isLoginMode ? 'Sign up instead?' : 'Log in instead?'}
                     </Button>
                     </div>
