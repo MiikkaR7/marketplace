@@ -71,7 +71,7 @@ const Listings = () => {
     )
   
 
-    if (data.length > 1 && searchState == true) return (
+    if (data.length > 0 && searchState == true) return (
       <div className="listings__page">
         <h1 className="listings__header">All Marketplace listings</h1>
         <h3 className="listings__tip">Click on an item to see detailed information</h3>
