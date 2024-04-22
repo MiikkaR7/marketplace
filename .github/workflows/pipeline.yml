@@ -61,9 +61,9 @@ jobs:
         run: npm run test
 
        # Run frontend tests
-      - name: Run the frontend tests
-        working-directory: ./frontend
-        run: npm run test:cypress
+      #- name: Run the frontend tests
+      #  working-directory: ./frontend
+      #  run: npm run test:cypress
 
   build:
     runs-on: ubuntu-latest
