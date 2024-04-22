@@ -87,3 +87,10 @@ export const deleteListingById = async ({id, token}) => {
 
     return await res.json();
 };
+
+export const findListingsByName = async (name) => {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/listings/search/${name}`
+  );
+  return await res.json();
+};

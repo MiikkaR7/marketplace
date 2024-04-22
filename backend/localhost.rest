@@ -16,7 +16,7 @@ Authorization: BEARER {{authToken}}
 
 ###
 
-GET http://localhost:5030/api/listings/search/ki
+GET http://localhost:5030/api/listings/search/Muumi
 Authorization: BEARER {{authToken}} 
 
 

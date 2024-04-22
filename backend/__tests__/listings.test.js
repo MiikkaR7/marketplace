@@ -87,6 +87,25 @@ describe('GET listings items endpoint', () => {
       expect(response.status).toEqual(400);
     });
 
+    test('should search listing by name and return 200', async () => {
+      const response = await request(app)
+          .get('/api/listings/search/Muumi')
+          .set('Accept', 'application/json');
+
+      expect(response.status).toEqual(200);
+      expect(response.body).toEqual(
+        expect.arrayContaining([
+          expect.objectContaining({
+              id: 1,
+              name: 'Muumimuki',
+              price: 30.99,
+              description: 'Harvinainen kerailyesine',
+              image: 'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560',
+              owner: 'ADMIN-0000-0000-0000-000000000000000'
+          }),
+        ]),
+      );
+    });
 });
 
 describe('POST listings endpoint', () => {

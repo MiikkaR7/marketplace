@@ -21,3 +21,13 @@
     border-bottom-width: 4px;
     border-bottom-style: solid;
 }
+
+.search__bar {
+    width: 35%;
+    height: 3rem;
+    font-size: x-large;
+}
+
+.status__message {
+    font-size: x-large;
+}
