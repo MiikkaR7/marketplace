@@ -51,31 +51,19 @@ jobs:
         working-directory: ./backend
         run: npm install --force
 
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm install --force
+
       # Run backend tests
       - name: Run the backend tests
         working-directory: ./backend
         run: npm run test
 
-      - name: Install frontend dependencies
+       # Run frontend tests
+      - name: Run the frontend tests
         working-directory: ./frontend
-        run: npm install
-
-
-      # Run frontend tests
-      #- name: Run the frontend tests
-      #  working-directory: ./frontend
-      #  run: npm run test:cypress
-
-      #- name: Run the frontend tests
-        #working-directory: ./frontend
-        #run:  |
-          #cd ..
-          #cd backend
-          #npm run dev & sleep 10 && curl http://localhost:5000/api/menuitems/1 &
-          #cd ..
-          #cd frontend
-          #npm run dev & sleep 10 && curl http://localhost:5173 &
-          #npm run test:cypress
+        run: npm run test:cypress
 
   build:
     runs-on: ubuntu-latest
