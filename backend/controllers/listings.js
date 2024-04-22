@@ -67,6 +67,21 @@ const getListingsbyOwner = async (req, res) => {
 
 }
 
+//Get listings by name
+
+const getListingsByName = async (req, res) => {
+    try {
+        const name = req.params.name;
+        const response = await listings.findListingByName(name);
+        if (response) {
+            res.status(200).json(response);
+        }
+    } catch (error) {
+        res.status(500).json(error.message);
+    }
+
+}
+
 //Create new listing
 
 const createNewListing = async (req, res) => {
@@ -167,5 +182,6 @@ module.exports = {
     updateListingById,
     deleteListing,
     getListingById,
-    getListingsbyOwner
+    getListingsbyOwner,
+    getListingsByName
   };

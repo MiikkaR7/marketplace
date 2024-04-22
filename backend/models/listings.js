@@ -49,6 +49,19 @@ const listings = {
         throw new Error(error);
     }
   },
+  findListingByName: async(name) => {
+    try {
+        const connection = await pool.getConnection();
+        const [results] = await connection.query(
+            'SELECT * FROM `listings` WHERE name LIKE CONCAT("%", ?, "%")', [name]
+        );
+        connection.release();
+        return results;
+
+    } catch (error) {
+        throw new Error(error);
+    }
+},
   findByListing: async (listing) => {
     try {
         const connection = await pool.getConnection();

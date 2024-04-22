@@ -16,6 +16,11 @@ Authorization: BEARER {{authToken}}
 
 ###
 
+GET http://localhost:5030/api/listings/search/ki
+Authorization: BEARER {{authToken}} 
+
+
+###
 POST http://localhost:5030/api/listings 
 Content-Type: application/json
 Authorization: BEARER {{authToken}} 
