@@ -2,6 +2,7 @@ import React from "react";
 import { useRef, useContext } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
+import { useAlert } from "react-alert";
 
 import Input from "../../shared/components/Input";
 import Button from "../../shared/components/Button";
@@ -18,6 +19,7 @@ const AddListing = () => {
   const auth = useContext(AuthContext);
 
   let navigate = useNavigate();
+  const alert = useAlert();
 
   const nameRef = useRef();
   const priceRef = useRef();
@@ -39,8 +41,7 @@ const AddListing = () => {
       token: auth.token
     })
 
-    //force page to refresh with invalid request(maybe better approach?)
-    await createListing(nameRef);
+    alert.show('SUCCESSFULLY CREATED LISTING', {type: 'success'});
     navigate('/');
   };
 

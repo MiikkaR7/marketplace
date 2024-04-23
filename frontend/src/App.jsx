@@ -25,6 +25,8 @@ function App() {
   const [userId, setuser] = useState(false);
   const [tokenExpirationDate, setExpirationDate] = useState(false);
 
+  const alert = useAlert();
+
   
   const login = useCallback((uid, token, expirationDate) => {
     setToken(token);
@@ -46,6 +48,7 @@ function App() {
   }, []);
 
   const logout = useCallback(() => {
+    alert.show('SUCCESSFULLY LOGGED OUT', {type: 'success'});
     setToken(null);
     setuser(null);
     setExpirationDate(null);

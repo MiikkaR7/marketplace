@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
+import { useAlert } from "react-alert";
 
 import ListingView from "../../shared/components/ListingView";
 import Button from "../../shared/components/Button";
@@ -15,6 +16,7 @@ import './MyListing.css';
 const MyListing = props => {
 
 let navigate = useNavigate();
+const alert = useAlert();
 
 const auth = useContext(AuthContext);
 
@@ -34,12 +36,12 @@ const deleteListingMutation = useMutation({
 
 const deleteConfirmedHandler = () => {
   setConfirmationModal(false);
+  alert.show('SUCCESSFULLY DELETED LISTING', {type: 'success'});
   deleteListingMutation.mutate({
     id: props.id,
     token: auth.token
   })
   console.log("Deleted listing with id" + props.id);
-  navigate(0);
 };
 
   const toUpdatePage = () => {

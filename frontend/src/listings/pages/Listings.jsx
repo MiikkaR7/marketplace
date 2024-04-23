@@ -64,7 +64,7 @@ const Listings = () => {
             type="text"
             placeholder="Search listings..."
             value={searchTerm}
-            onChange={handleChange}
+            onChange={handleSearchChange}
           />
           <h2>There are currently no listings</h2>
         </div>

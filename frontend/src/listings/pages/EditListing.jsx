@@ -3,7 +3,7 @@ import { useRef, useContext, useState, useEffect } from "react";
 import { useMutation } from "react-query";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import { useAlert } from "react-alert";
 
 import Input from "../../shared/components/Input";
 import Button from "../../shared/components/Button";
@@ -17,7 +17,8 @@ import './EditListing.css';
 const EditListing = (props) => {
 
   const auth = useContext(AuthContext);
-  
+  const alert = useAlert();
+
   let Content;
 
   let navigate = useNavigate();
@@ -63,6 +64,7 @@ const EditListing = (props) => {
 
   const ListingSubmitHandler = async event => {
     event.preventDefault();
+    alert.show('EDIT SUCCESSFUL', {type: 'success'});
     updateListingMutation.mutate({
       id: id,
       name: nameRef.current.value,
@@ -72,8 +74,6 @@ const EditListing = (props) => {
       token: auth.token
     })
 
-    //force page to refresh with invalid request(maybe better approach?)
-    await updateListing(id);
     navigate('/');
   };
 
