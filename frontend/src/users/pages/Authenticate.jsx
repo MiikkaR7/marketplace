@@ -1,6 +1,7 @@
 import { useRef, useState, useContext } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from 'react-router-dom';
+import { useAlert } from "react-alert";
 
 import { signUpUser, logInUser } from "../api/users";
 import { AuthContext } from "../../shared/context/auth-context";
@@ -13,6 +14,7 @@ import './Authenticate.css';
 const Authenticate = (props) => {
 
     let navigate = useNavigate();
+    const alert = useAlert();
     const auth = useContext(AuthContext);
 
     const [isLoginMode, setLoginMode] = useState(true);
@@ -29,9 +31,12 @@ const Authenticate = (props) => {
         mutationFn: signUpUser,
         onSuccess:(data) => {
             console.log(data);
+            alert.show('SUCCESSFULLY SIGNED UP!', {type: 'success'});
             auth.login(data.id, data.token);
+            navigate('/');
         },
         onError:(error) => {
+            alert.show('ERROR CREATING ACCOUNT', {type: 'error'});
             console.log(error)
         }
     });
@@ -40,9 +45,12 @@ const Authenticate = (props) => {
         mutationFn: logInUser,
         onSuccess:(data) => {
             console.log(data);
+            alert.show('SUCCESSFULLY LOGGED IN!', {type: 'success'});
             auth.login(data.id, data.token);
+            navigate('/');
         },
         onError:(error) => {
+            alert.show('ERROR LOGGING IN', {type: 'error'});
             console.log(error)
         }
     });
@@ -65,8 +73,6 @@ const Authenticate = (props) => {
         admin: true
             })
         }
-
-        navigate('/');
     };
 
 

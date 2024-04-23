@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from "react-query";
 import { useState, useEffect, useCallback } from 'react'
+import { useAlert } from 'react-alert'
 
 import { AuthContext } from './shared/context/auth-context';
 
@@ -24,6 +25,8 @@ function App() {
   const [userId, setuser] = useState(false);
   const [tokenExpirationDate, setExpirationDate] = useState(false);
 
+  const alert = useAlert();
+
   
   const login = useCallback((uid, token, expirationDate) => {
     setToken(token);
@@ -45,6 +48,7 @@ function App() {
   }, []);
 
   const logout = useCallback(() => {
+    alert.show('SUCCESSFULLY LOGGED OUT', {type: 'success'});
     setToken(null);
     setuser(null);
     setExpirationDate(null);
@@ -85,7 +89,6 @@ function App() {
     ); 
 
   return (
-
         <AuthContext.Provider
           value={{ 
             isLoggedIn: !!token, 
