@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from "react-query";
 import { useState, useEffect, useCallback } from 'react'
+import { useAlert } from 'react-alert'
 
 import { AuthContext } from './shared/context/auth-context';
 
@@ -85,7 +86,6 @@ function App() {
     ); 
 
   return (
-
         <AuthContext.Provider
           value={{ 
             isLoggedIn: !!token, 
