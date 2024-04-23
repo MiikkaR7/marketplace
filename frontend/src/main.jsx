@@ -7,9 +7,9 @@ import './index.css'
 
 const options = {
   // you can also just use 'bottom center'
-  position: positions.BOTTOM_CENTER,
+  position: positions.TOP_CENTER,
   timeout: 5000,
-  offset: '30px',
+  offset: '2rem',
   // you can also just use 'scale'
   transition: transitions.SCALE
 }

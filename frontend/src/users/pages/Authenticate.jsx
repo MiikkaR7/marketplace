@@ -31,10 +31,12 @@ const Authenticate = (props) => {
         mutationFn: signUpUser,
         onSuccess:(data) => {
             console.log(data);
-            alert.success('Sign up successful!');
+            alert.show('SUCCESSFULLY SIGNED UP!', {type: 'success'});
             auth.login(data.id, data.token);
+            navigate('/');
         },
         onError:(error) => {
+            alert.show('ERROR CREATING ACCOUNT', {type: 'error'});
             console.log(error)
         }
     });
@@ -43,10 +45,12 @@ const Authenticate = (props) => {
         mutationFn: logInUser,
         onSuccess:(data) => {
             console.log(data);
-            alert.success('Log in successful!');
+            alert.show('SUCCESSFULLY LOGGED IN!', {type: 'success'});
             auth.login(data.id, data.token);
+            navigate('/');
         },
         onError:(error) => {
+            alert.show('ERROR LOGGING IN', {type: 'error'});
             console.log(error)
         }
     });
@@ -69,8 +73,6 @@ const Authenticate = (props) => {
         admin: true
             })
         }
-
-        navigate('/');
     };
 
 
