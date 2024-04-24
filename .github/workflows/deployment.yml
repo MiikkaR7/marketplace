@@ -76,7 +76,8 @@ jobs:
 
       - name: Install OpenVPN and RSync
         run: |
-          sudo apt update
+          sudo rm /etc/apt/sources.list.d/microsoft-prod.list
+          sudo apt-get update
           sudo apt --assume-yes --no-install-recommends install openvpn openvpn-systemd-resolved rsync
 
       - name: Setup the VPN configs
