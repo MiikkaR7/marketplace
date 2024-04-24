@@ -36,6 +36,7 @@ if (!storedData) {
     );
 
   console.log(data.length);
+  console.log(auth);
 
 
     if (data.length < 1) return (

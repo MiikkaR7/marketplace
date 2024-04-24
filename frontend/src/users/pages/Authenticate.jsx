@@ -32,7 +32,7 @@ const Authenticate = (props) => {
         onSuccess:(data) => {
             console.log(data);
             alert.show('SUCCESSFULLY SIGNED UP!', {type: 'success'});
-            auth.login(data.id, data.token);
+            auth.login(data.id, data.token, data.name);
             navigate('/');
         },
         onError:(error) => {
@@ -46,7 +46,7 @@ const Authenticate = (props) => {
         onSuccess:(data) => {
             console.log(data);
             alert.show('SUCCESSFULLY LOGGED IN!', {type: 'success'});
-            auth.login(data.id, data.token);
+            auth.login(data.id, data.token, data.name);
             navigate('/');
         },
         onError:(error) => {

@@ -23,14 +23,16 @@ function App() {
 
   const [token, setToken] = useState(false);
   const [userId, setuser] = useState(false);
+  const [userName, setName] = useState(false);
   const [tokenExpirationDate, setExpirationDate] = useState(false);
 
   const alert = useAlert();
 
   
-  const login = useCallback((uid, token, expirationDate) => {
+  const login = useCallback((uid, token, username, expirationDate) => {
     setToken(token);
     setuser(uid);
+    setName(username);
   
     const tokenExpirationDate = 
     expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
@@ -42,6 +44,7 @@ function App() {
       JSON.stringify({
         userId: uid, 
         token,
+        username,
         expiration: tokenExpirationDate.toISOString()
       })
     )
@@ -51,6 +54,7 @@ function App() {
     alert.show('SUCCESSFULLY LOGGED OUT', {type: 'success'});
     setToken(null);
     setuser(null);
+    setName(null);
     setExpirationDate(null);
     localStorage.removeItem('userData');
   }, []);
@@ -91,7 +95,8 @@ function App() {
   return (
         <AuthContext.Provider
           value={{ 
-            isLoggedIn: !!token, 
+            isLoggedIn: !!token,
+            userName: userName, 
             token: token, 
             userId: userId, 
             login: login, 
