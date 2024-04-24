@@ -38,6 +38,7 @@ const AddListing = () => {
       description: descriptionRef.current.value,
       image: imageRef.current.value,
       owner: auth.userId,
+      displayname: auth.userName,
       token: auth.token
     })
 

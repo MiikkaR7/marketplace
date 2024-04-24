@@ -17,6 +17,7 @@ const ModalOverlay = props => {
       </header>
       <h3>{props.description}</h3>
       <img style={props.style} src={props.img}/>
+      <h4>Listing created by: {props.displayname}</h4>
       <footer className={`modal__footer ${props.footerClass}`}>
         <h2>{props.footer}</h2>
       </footer>

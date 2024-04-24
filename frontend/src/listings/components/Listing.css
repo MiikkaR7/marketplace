@@ -56,7 +56,11 @@
 .listing__modal img {
     max-width: 20rem;
     max-height: 20rem;
-    margin-left: 25%;                            
+    margin-left: 22%;
+    margin-top: 2rem;
+    border-color: rgb(199, 199, 199);
+    border-width: 2px;
+    border-style: solid;                          
 }
 
 .listing__modal h3 {
@@ -64,6 +68,10 @@
 }
 
 .listing__modal h2 {
+    margin-left: 2rem;                            
+}
+
+.listing__modal h4 {
     margin-left: 2rem;                            
 }
 

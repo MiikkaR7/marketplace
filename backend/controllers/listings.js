@@ -92,7 +92,8 @@ const createNewListing = async (req, res) => {
             price: req.body.price,
             description: req.body.description,
             image: req.body.image,
-            owner: req.body.owner
+            owner: req.body.owner,
+            displayname: req.body.displayname
         }
 
         

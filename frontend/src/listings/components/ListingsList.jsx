@@ -13,6 +13,7 @@ const ListingsList = props => {
         description={listing.description}
         image={listing.image}
         owner={listing.owner}
+        displayname={listing.displayname}
       />
     )}
     </ul>
