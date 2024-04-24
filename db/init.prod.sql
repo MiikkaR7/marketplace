@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS `listings` (
     `description` varchar(200) NOT NULL,
     `image` varchar(250) NOT NULL,
     `owner` varchar(60) NOT NULL,
+    `displayname` varchar(60) NOT NULL,
     `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (`id`)

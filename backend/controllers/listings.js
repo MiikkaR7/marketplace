@@ -5,11 +5,12 @@ const listings = require('../models/listings');
 //Input validation
 
 const listingSchema = Joi.object({
-    name: Joi.string().required().min(3).max(27),
+    name: Joi.string().required().min(2).max(27),
     price: Joi.number().required().min(0),
     description: Joi.string().required().min(1),
     image: Joi.string().required().min(1),
     owner: Joi.string().required().min(36),
+    displayname: Joi.string().required().min(2).max(27)
 });
 
 const updateSchema = Joi.object({
@@ -92,7 +93,8 @@ const createNewListing = async (req, res) => {
             price: req.body.price,
             description: req.body.description,
             image: req.body.image,
-            owner: req.body.owner
+            owner: req.body.owner,
+            displayname: req.body.displayname
         }
 
         

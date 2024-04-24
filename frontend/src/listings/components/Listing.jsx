@@ -28,6 +28,7 @@ const Listing = props => {
         header={[props.name + ", ", props.price + " €"]} 
         description={props.description}
         img={props.image}
+        displayname={props.displayname}
         onClick={hideListingHandler}
         footerClass="place-item__modal-actions"
         footer={
