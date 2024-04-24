@@ -54,7 +54,8 @@ describe('GET listings items endpoint', () => {
                 price: 30.99,
                 description: 'Harvinainen kerailyesine',
                 image: 'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560',
-                owner: 'ADMIN-0000-0000-0000-000000000000000'
+                owner: 'ADMIN-0000-0000-0000-000000000000000',
+                displayname: 'Admin'
             }),
           ]),
         );
@@ -74,7 +75,8 @@ describe('GET listings items endpoint', () => {
               price: 30.99,
               description: 'Harvinainen kerailyesine',
               image: 'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560',
-              owner: 'ADMIN-0000-0000-0000-000000000000000'
+              owner: 'ADMIN-0000-0000-0000-000000000000000',
+              displayname: 'Admin'
           }),
       );
     });
@@ -101,7 +103,8 @@ describe('GET listings items endpoint', () => {
               price: 30.99,
               description: 'Harvinainen kerailyesine',
               image: 'https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560',
-              owner: 'ADMIN-0000-0000-0000-000000000000000'
+              owner: 'ADMIN-0000-0000-0000-000000000000000',
+              displayname: 'Admin'
           }),
         ]),
       );
@@ -115,7 +118,8 @@ describe('POST listings endpoint', () => {
           price: 60.99,
           description: 'Punainen mariskooli',
           image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
-          owner: 'ADMIN-0000-0000-0000-000000000000000'
+          owner: 'ADMIN-0000-0000-0000-000000000000000',
+          displayname: 'Admin'
         };
 
         const response = await request(app)
@@ -133,6 +137,7 @@ describe('POST listings endpoint', () => {
         expect(response.body.description).toEqual('Punainen mariskooli');
         expect(response.body.image).toEqual('https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg');
         expect(response.body.owner).toEqual('ADMIN-0000-0000-0000-000000000000000');
+        expect(response.body.displayname).toEqual('Admin');
     });
 
     test('should not create listing with empty name and return 400', async () => {
@@ -141,7 +146,8 @@ describe('POST listings endpoint', () => {
         price: 60.99,
         description: 'Punainen mariskooli',
         image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
-        owner: 'TEST1-0000-0000-0000-000000000000000'
+        owner: 'TEST1-0000-0000-0000-000000000000000',
+        displayname: 'Admin'
       };
 
       const response = await request(app)
@@ -159,7 +165,8 @@ describe('POST listings endpoint', () => {
         price: 60.99,
         description: 'Punainen mariskooli',
         image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
-        owner: 'TEST1-0000-0000-0000-000000000000000'
+        owner: 'TEST1-0000-0000-0000-000000000000000',
+        displayname: 'Admin'
       };
 
       const response = await request(app)
@@ -177,7 +184,8 @@ describe('POST listings endpoint', () => {
         name: 'Testiesine',
         description: 'Testiesine',
         image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
-        owner: 'TEST1-0000-0000-0000-000000000000000'
+        owner: 'TEST1-0000-0000-0000-000000000000000',
+        displayname: 'Admin'
       };
 
       const response = await request(app)

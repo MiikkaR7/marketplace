@@ -15,10 +15,17 @@ const auth = useContext(AuthContext);
 let Content;
 
 const storedData = JSON.parse(localStorage.getItem('userData'));
+console.log(auth.isLoggedIn);
 
-if (!storedData) {
-    Content = "You are not logged in";
-  } else {
+if (!auth.isLoggedIn) return (
+  <>
+    <div className="listings__page">An error has occurred:</div>
+    <div>You are not logged in</div>
+  </>
+  )
+  
+if (auth.isLoggedIn) {
+
     const { userId, token } = storedData;
 
 

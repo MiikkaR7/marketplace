@@ -30,9 +30,9 @@ function App() {
 
   
   const login = useCallback((uid, token, username, expirationDate) => {
+    setName(username);
     setToken(token);
     setuser(uid);
-    setName(username);
   
     const tokenExpirationDate = 
     expirationDate || new Date(new Date().getTime() + 1000 * 60 * 60);
@@ -42,9 +42,9 @@ function App() {
     localStorage.setItem(
       'userData',
       JSON.stringify({
+        userName: username,
         userId: uid, 
         token,
-        username,
         expiration: tokenExpirationDate.toISOString()
       })
     )
@@ -65,7 +65,7 @@ function App() {
     if (storedData && storedData.token &&
       new Date(storedData.expiration) > new Date()
     ) {
-      login(storedData.userId, storedData.token, new Date(storedData.expiration));
+      login(storedData.userId, storedData.token, storedData.userName, new Date(storedData.expiration));
     }
   }, [login]);
 

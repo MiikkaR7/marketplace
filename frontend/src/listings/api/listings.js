@@ -28,7 +28,7 @@ export const getListingsbyOwner = async ({owner, token}) => {
   return await res.json();
 }
 
-export const createListing = async ({name, price, description, image, owner, token}) => {
+export const createListing = async ({name, price, description, image, owner, displayname, token}) => {
   console.log(name, price, description, image);
   const res = await fetch(
     `${import.meta.env.VITE_API_URL}/api/listings`, 
@@ -44,7 +44,8 @@ export const createListing = async ({name, price, description, image, owner, tok
         price,
         description,
         image,
-        owner
+        owner,
+        displayname
       })
     }
   );
