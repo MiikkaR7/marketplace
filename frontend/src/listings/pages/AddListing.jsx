@@ -6,53 +6,60 @@ import { useAlert } from "react-alert";
 
 import Input from "../../shared/components/Input";
 import Button from "../../shared/components/Button";
+import { AuthContext } from "../../shared/context/auth-context";
 
 import { createListing } from "../api/listings";
-import { AuthContext } from "../../shared/context/auth-context";
 
 import './AddListing.css';
 
 const AddListing = () => {
 
-  let Content;
+const auth = useContext(AuthContext);
+let navigate = useNavigate();
+const alert = useAlert();
 
-  const auth = useContext(AuthContext);
+//Refs and functions for creating listing
 
-  let navigate = useNavigate();
-  const alert = useAlert();
+const nameRef = useRef();
+const priceRef = useRef();
+const descriptionRef = useRef();
+const imageRef = useRef();
 
-  const nameRef = useRef();
-  const priceRef = useRef();
-  const descriptionRef = useRef();
-  const imageRef = useRef();
+const createListingMutation = useMutation({
 
-  const createListingMutation = useMutation({
     mutationFn: createListing
-  });
 
-  const ListingSubmitHandler = async event => {
-    event.preventDefault();
-    createListingMutation.mutate({
-      name: nameRef.current.value,
-      price: priceRef.current.value,
-      description: descriptionRef.current.value,
-      image: imageRef.current.value,
-      owner: auth.userId,
-      displayname: auth.userName,
-      token: auth.token
-    })
+})
 
-    alert.show('SUCCESSFULLY CREATED LISTING', {type: 'success'});
-    navigate('/');
-  };
+const ListingSubmitHandler = async event => {
 
-  if (auth.isLoggedIn == false) {
-    Content = "401 Unauthorized";
-  }
+  event.preventDefault();
+  createListingMutation.mutate({
+    name: nameRef.current.value,
+    price: priceRef.current.value,
+    description: descriptionRef.current.value,
+    image: imageRef.current.value,
+    owner: auth.userId,
+    displayname: auth.userName,
+    token: auth.token
+  })
 
-  if (auth.isLoggedIn == true) {
-    Content =
-    <div>
+  alert.show('SUCCESSFULLY CREATED LISTING', {type: 'success'});
+
+  navigate('/');
+
+}
+
+//Prevent unauthorized users from creating listings
+
+if (auth.isLoggedIn == false) return (
+  <div className="add__listing__page">
+    <p className="error__message">401 Unauthorized</p>
+  </div>
+)
+
+if (auth.isLoggedIn == true) return (
+  <div className="add__listing__page">
     <form className='listing__form' onSubmit={ListingSubmitHandler}>
       <Input id="name" ref={nameRef} type="text" label="Listing Title" />
       <Input id="price" ref={priceRef} type="number" min="0" step="0.01" label="Item Price"/>
@@ -62,11 +69,13 @@ const AddListing = () => {
       Submit Item
       </Button>
     </form>
-    </div>
-  }
+  </div>
+)
 
-  return (
-    <div className="add__listing__page">{Content}</div>
-  )
-};
+return (
+  <></>
+)
+
+}
+
 export default AddListing;

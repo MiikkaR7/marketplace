@@ -12,66 +12,56 @@ const MyListings = () => {
 
 const auth = useContext(AuthContext);
 
-let Content;
-
-const storedData = JSON.parse(localStorage.getItem('userData'));
-console.log(auth.isLoggedIn);
+//If user isn't logged in return error
 
 if (!auth.isLoggedIn) return (
   <>
     <div className="listings__page">An error has occurred:</div>
     <div>You are not logged in</div>
   </>
-  )
+)
   
 if (auth.isLoggedIn) {
 
-    const { userId, token } = storedData;
+//Render page content based on result of query
 
+const { isLoading, error, data } = useQuery("listingsData", () =>getListingsbyOwner({owner: auth.userId, token: auth.token}));
 
-  const { isLoading, error, data } = useQuery("listingsData", () =>getListingsbyOwner({owner: userId, token: token}));
-
-    if (isLoading) return (
+  if (isLoading) return (
     <div className="listings__page">Loading listings...</div>
-    );
+  );
 
-    if (error) return (
-        <>
-            <div className="listings__page">An error has occurred:</div>
-            <div>{error.message}</div>
-        </>
-    );
+  if (error) return (
+    <>
+      <div className="listings__page">An error has occurred:</div>
+      <div>{error.message}</div>
+    </>
+  );
 
-  console.log(data.length);
-  console.log(auth);
+//If user has no listings
 
-
-    if (data.length < 1) return (
-      <div className="listings__page">
-        <h1 className="my__listings__header">My listings</h1>
-        <h2>You have no listings</h2>
-      </div>
+  if (data.length < 1) return (
+    <div className="listings__page">
+      <h1 className="my__listings__header">My listings</h1>
+      <h2>You have no listings</h2>
+    </div>
   )
+
+//Show user's listings
 
   if (data.length > 0) return (
     <div className="listings__page">
       <h1 className="my__listings__header">My listings</h1>
       <MyListingsList items={data}/>
     </div>
-)
-
-
-
-  }
-
-  return (
-    <div className="listings__page">
-        <h1 className="my__listings__header">My listings</h1>
-    </div>
-    )
+  )
 
 }
 
+return (
+  <></>
+)
 
+}
 
 export default MyListings;

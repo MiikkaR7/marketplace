@@ -68,7 +68,7 @@ const getListingsbyOwner = async (req, res) => {
 
 }
 
-//Get listings by name
+//Get listings by name for search
 
 const getListingsByName = async (req, res) => {
     try {
