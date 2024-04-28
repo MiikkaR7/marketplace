@@ -45,9 +45,15 @@ const Authenticate = (props) => {
         mutationFn: logInUser,
         onSuccess:(data) => {
             console.log(data);
-            alert.show('SUCCESSFULLY LOGGED IN!', {type: 'success'});
-            auth.login(data.id, data.token, data.name);
-            navigate('/');
+            if (data.message == 'Could not identify user, credentials might be wrong' || data.message == 'Something went wrong with login') {
+                alert.show('ERROR LOGGING IN', {type: 'error'});
+            }
+
+            else {
+                alert.show('SUCCESSFULLY LOGGED IN!', {type: 'success'});
+                auth.login(data.id, data.token, data.name);
+                navigate('/');
+            }
         },
         onError:(error) => {
             alert.show('ERROR LOGGING IN', {type: 'error'});
@@ -89,6 +95,7 @@ const Authenticate = (props) => {
                         <Button id="formbutton" type="submit" disable={signUpUserMutation.isLoading}>{isLoginMode ? 'LOG IN' : 'SIGN UP'}</Button>
                     </div>
                     </form>
+                    {!isLoginMode && <p>DO NOT FORGET YOUR CREDENTIALS!</p>}
                     <div className="auth__switch">
                     <Button id="switchbutton" inverse onClick={switchModeHandler}>
                         {isLoginMode ? 'Sign up instead?' : 'Log in instead?'}
