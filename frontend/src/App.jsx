@@ -14,11 +14,11 @@ import EditListing from './listings/pages/EditListing';
 
 import './App.css'
 
+function App() {
+
 const queryClient = new QueryClient();
 let logoutTimer;
 const alert = useAlert();
-
-function App() {
 
 //States for authorization and storage
 
