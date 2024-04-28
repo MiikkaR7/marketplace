@@ -16,9 +16,7 @@ const Listing = props => {
   const auth = useContext(AuthContext);
 
   const ListingClick = () => {
-    console.log(props.owner);
     setListingModal(true);
-    console.log("Listing clicked");
   }
 
   return (

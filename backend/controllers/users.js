@@ -5,6 +5,8 @@ const Joi = require('joi');
 
 const users = require('../models/users');
 
+//Input validation schemas
+
 const userSchema = Joi.object({
   name: Joi.string().required().min(3),
   email: Joi.string().email().required().min(6),
@@ -29,6 +31,8 @@ const signUpUser = async (req, res) => {
         }
   
   const { name, email, password } = req.body;
+
+  //Check if credentials already exist, then create new user
   
   try {
     const results = await users.findByEmail(email);

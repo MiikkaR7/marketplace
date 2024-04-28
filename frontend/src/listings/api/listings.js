@@ -1,3 +1,7 @@
+//Listings API calls
+
+//Get all listings
+
 export const getAllListings = async () => {
     const res = await fetch(
       `${import.meta.env.VITE_API_URL}/api/listings`
@@ -12,9 +16,10 @@ export const getListingById = async (id) => {
     return await res.json();
   };
 
+
+//Get listings by owner for My listings -page
+
 export const getListingsbyOwner = async ({owner, token}) => {
-  console.log(owner);
-  console.log(token);
   const res = await fetch(
     `${import.meta.env.VITE_API_URL}/api/listings/mylistings/${owner}`, 
     {
@@ -27,6 +32,8 @@ export const getListingsbyOwner = async ({owner, token}) => {
   );
   return await res.json();
 }
+
+//Create listing
 
 export const createListing = async ({name, price, description, image, owner, displayname, token}) => {
   console.log(name, price, description, image);
@@ -52,6 +59,8 @@ export const createListing = async ({name, price, description, image, owner, dis
   return await res.json();
 };
 
+//Update listing
+
 export const updateListing = async ({id, name, price, description, image, token}) => {
   console.log(id, name, price, description, image);
   const res = await fetch(
@@ -75,6 +84,8 @@ export const updateListing = async ({id, name, price, description, image, token}
   return await res.json();
 };
 
+//delete listing
+
 export const deleteListingById = async ({id, token}) => {
   const res = await fetch(
     `${import.meta.env.VITE_API_URL}/api/listings/${id}`, 
@@ -88,6 +99,8 @@ export const deleteListingById = async ({id, token}) => {
 
     return await res.json();
 };
+
+//Search listings by name
 
 export const findListingsByName = async (name) => {
   const res = await fetch(

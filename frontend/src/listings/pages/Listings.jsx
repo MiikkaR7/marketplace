@@ -20,17 +20,14 @@ const Listings = () => {
 
   const handleSearch =  async () => {
 
-    console.log(searchTerm);
+    let response = await findListingsByName(searchTerm);
 
-        let response = await findListingsByName(searchTerm);
+    if (response.length > 0) {
+      setSearchResults(response);
+      setSearchState(true);
+      setMessage("Found " + response.length + " result(s)");
+    } else {
 
-        if (response.length > 0) {
-          setSearchResults(response);
-          setSearchState(true);
-          setMessage("Found " + response.length + " result(s)");
-        } else {
-
-      console.log("Error handling behavior");
       setMessage("No results for search " + `\"${searchTerm}\"`);
 
     }

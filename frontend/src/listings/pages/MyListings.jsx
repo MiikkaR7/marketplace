@@ -12,11 +12,6 @@ const MyListings = () => {
 
 const auth = useContext(AuthContext);
 
-let Content;
-
-const storedData = JSON.parse(localStorage.getItem('userData'));
-console.log(auth.isLoggedIn);
-
 if (!auth.isLoggedIn) return (
   <>
     <div className="listings__page">An error has occurred:</div>
@@ -26,31 +21,24 @@ if (!auth.isLoggedIn) return (
   
 if (auth.isLoggedIn) {
 
-    const { userId, token } = storedData;
-
-
-  const { isLoading, error, data } = useQuery("listingsData", () =>getListingsbyOwner({owner: userId, token: token}));
+  const { isLoading, error, data } = useQuery("listingsData", () =>getListingsbyOwner({owner: auth.userId, token: auth.token}));
 
     if (isLoading) return (
-    <div className="listings__page">Loading listings...</div>
+      <div className="listings__page">Loading listings...</div>
     );
 
     if (error) return (
-        <>
-            <div className="listings__page">An error has occurred:</div>
-            <div>{error.message}</div>
-        </>
+      <>
+        <div className="listings__page">An error has occurred:</div>
+        <div>{error.message}</div>
+      </>
     );
 
-  console.log(data.length);
-  console.log(auth);
-
-
-    if (data.length < 1) return (
-      <div className="listings__page">
-        <h1 className="my__listings__header">My listings</h1>
-        <h2>You have no listings</h2>
-      </div>
+  if (data.length < 1) return (
+    <div className="listings__page">
+      <h1 className="my__listings__header">My listings</h1>
+      <h2>You have no listings</h2>
+    </div>
   )
 
   if (data.length > 0) return (
@@ -58,20 +46,14 @@ if (auth.isLoggedIn) {
       <h1 className="my__listings__header">My listings</h1>
       <MyListingsList items={data}/>
     </div>
-)
-
-
-
-  }
-
-  return (
-    <div className="listings__page">
-        <h1 className="my__listings__header">My listings</h1>
-    </div>
-    )
+  )
 
 }
 
+  return (
+    <></>
+    )
 
+}
 
 export default MyListings;
