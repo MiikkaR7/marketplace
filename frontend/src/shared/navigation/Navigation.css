@@ -8,7 +8,27 @@
 }
 
 .navigation__header-nav {
+    right: 0;
     position: absolute;
-    margin-left: 65%;
-    margin-right: auto 0;
+}
+
+.login__status {
+    position: absolute;
+    color: white;
+    font-size: larger;
+    margin-left: 24rem;
+}
+
+@media (max-width:800px) {
+.login__status {
+    transform: translate(-24rem, 6rem);
+    width: 10rem;
+    position: absolute;
+    color: black;
+    font-size: x-large;
+    }
+
+.navigation__title {
+    font-size: larger;
+}
 }
