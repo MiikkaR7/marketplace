@@ -5,3 +5,7 @@
 .listing__form {
     margin-top: 8rem;
 }
+
+.error__message {
+    font-size: x-large;
+}
