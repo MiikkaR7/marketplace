@@ -104,7 +104,26 @@ const { isLoading, error, data } = useQuery("listingsData", () =>getAllListings(
     </div>
   )
 
+
 //If listings exist and search is not in use
+
+  if (data.length > 0 && searchState == true) return (
+      <div className="listings__page">
+        <h1 className="listings__header">All Marketplace listings</h1>
+        <h3 className="listings__tip">Click on an item to see detailed information</h3>
+        <input
+            className="search__bar"
+            type="text"
+            placeholder="Search listings..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+        />
+        <Button onClick={handleSearch}>Search</Button>
+        <Button onClick={clearSearch}>Clear</Button>
+        <p className="status__message">{statusMessage}</p>
+        <ListingsList items={searchResults}/>
+      </div>
+    )
   
   if (data.length > 0 && searchState == false) return (
     <div className="listings__page">
