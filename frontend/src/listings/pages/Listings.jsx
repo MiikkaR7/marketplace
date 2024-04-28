@@ -124,9 +124,10 @@ const { isLoading, error, data } = useQuery("listingsData", () =>getAllListings(
     </div>
   )
 
-    return (
-    <></>
-    )
+return (
+<></>
+)
+
 }
 
 export default Listings;

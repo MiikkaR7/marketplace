@@ -12,27 +12,33 @@ const MyListings = () => {
 
 const auth = useContext(AuthContext);
 
+//If user isn't logged in return error
+
 if (!auth.isLoggedIn) return (
   <>
     <div className="listings__page">An error has occurred:</div>
     <div>You are not logged in</div>
   </>
-  )
+)
   
 if (auth.isLoggedIn) {
 
-  const { isLoading, error, data } = useQuery("listingsData", () =>getListingsbyOwner({owner: auth.userId, token: auth.token}));
+//Render page content based on result of query
 
-    if (isLoading) return (
-      <div className="listings__page">Loading listings...</div>
-    );
+const { isLoading, error, data } = useQuery("listingsData", () =>getListingsbyOwner({owner: auth.userId, token: auth.token}));
 
-    if (error) return (
-      <>
-        <div className="listings__page">An error has occurred:</div>
-        <div>{error.message}</div>
-      </>
-    );
+  if (isLoading) return (
+    <div className="listings__page">Loading listings...</div>
+  );
+
+  if (error) return (
+    <>
+      <div className="listings__page">An error has occurred:</div>
+      <div>{error.message}</div>
+    </>
+  );
+
+//If user has no listings
 
   if (data.length < 1) return (
     <div className="listings__page">
@@ -40,6 +46,8 @@ if (auth.isLoggedIn) {
       <h2>You have no listings</h2>
     </div>
   )
+
+//Show user's listings
 
   if (data.length > 0) return (
     <div className="listings__page">
@@ -50,9 +58,9 @@ if (auth.isLoggedIn) {
 
 }
 
-  return (
-    <></>
-    )
+return (
+  <></>
+)
 
 }
 
