@@ -7,83 +7,99 @@ import { useAlert } from "react-alert";
 
 import Input from "../../shared/components/Input";
 import Button from "../../shared/components/Button";
+import { AuthContext } from "../../shared/context/auth-context";
 
 import { updateListing } from "../api/listings";
 import { getListingById } from "../api/listings";
-import { AuthContext } from "../../shared/context/auth-context";
 
 import './EditListing.css';
 
-const EditListing = (props) => {
+const EditListing = () => {
 
-  const auth = useContext(AuthContext);
-  const alert = useAlert();
+const auth = useContext(AuthContext);
+let navigate = useNavigate();
+const alert = useAlert();
 
-  let Content;
+let Content;
 
-  let navigate = useNavigate();
+//Shortcut to My listings -page
 
-  const toMyListings = () => {
-    navigate('/mylistings')
-  }
+const toMyListings = () => {
 
+  navigate('/mylistings');
 
-  //Default values for editing to prevent errors
-  const [listingData, setlistingData] = useState(
-    [
-        {
-            name: "",
-            price: "",
-            description: "",
-            image: ""
-        }
-    ]
+}
+
+//Default values for editing to prevent errors
+
+const [listingData, setlistingData] = useState(
+  [
+    {
+      name: "",
+      price: "",
+      description: "",
+      image: ""
+    }
+  ]
 );
 
-  let { id } = useParams();
+let { id } = useParams();
 
-  console.log("handle " + id);
+//Get values for placeholders from selected listing
 
-  useEffect(() => {
+useEffect(() => {
 
-    async function getData() {
-      const res = await getListingById(id);
-      setlistingData(res);
-    }
-    getData();
-  }, []);
-
-  const nameRef = useRef();
-  const priceRef = useRef();
-  const descriptionRef = useRef();
-  const imageRef = useRef();
-
-  const updateListingMutation = useMutation({
-    mutationFn: updateListing
-  });
-
-  const ListingSubmitHandler = async event => {
-    event.preventDefault();
-    alert.show('EDIT SUCCESSFUL', {type: 'success'});
-    updateListingMutation.mutate({
-      id: id,
-      name: nameRef.current.value,
-      price: priceRef.current.value,
-      description: descriptionRef.current.value,
-      image: imageRef.current.value,
-      token: auth.token
-    })
-
-    navigate('/');
-  };
-
-  if (auth.isLoggedIn == false || auth.userId != listingData.owner) {
-    Content = "401 Unauthorized";
+  async function getData() {
+    const res = await getListingById(id);
+    setlistingData(res);
   }
+  getData();
+}, []);
 
-  if (auth.isLoggedIn == true && auth.userId == listingData.owner) {
-    Content =
-    <div className="edit__page">
+//Refs for editing
+
+const nameRef = useRef();
+const priceRef = useRef();
+const descriptionRef = useRef();
+const imageRef = useRef();
+
+const updateListingMutation = useMutation({
+
+    mutationFn: updateListing
+
+});
+
+//Submit button functionality
+
+const ListingSubmitHandler = async event => {
+
+  event.preventDefault();
+
+  alert.show('EDIT SUCCESSFUL', {type: 'success'});
+
+  updateListingMutation.mutate({
+    id: id,
+    name: nameRef.current.value,
+    price: priceRef.current.value,
+    description: descriptionRef.current.value,
+    image: imageRef.current.value,
+    token: auth.token
+  })
+
+  navigate('/');
+
+};
+
+//Prevent unauthorized users from editing listings
+
+if (auth.isLoggedIn == false || auth.userId != listingData.owner) return (
+  <div className="edit__page">
+    <p className="error__message">401 Unauthorized</p>
+  </div>
+)
+
+if (auth.isLoggedIn == true && auth.userId == listingData.owner) return (
+  <div className="edit__page">
     <form className='listing__form' onSubmit={ListingSubmitHandler}>
       <Input id="name" ref={nameRef} defaultValue={listingData.name} type="text" label="Listing Name" />
       <Input id="price" ref={priceRef} defaultValue={listingData.price} type="number" min="0" step="0.01" label="Listing Price"/>
@@ -96,11 +112,13 @@ const EditListing = (props) => {
       Cancel
       </Button>
     </form>
-    </div>
-  }
+  </div>
+)
 
-  return (
-    <div className="edit__page">{Content}</div>
-  )
-};
+return (
+  <></>
+)
+
+}
+
 export default EditListing;
