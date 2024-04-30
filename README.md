@@ -4,6 +4,8 @@ Web Programming - Final Project
 
 Service is running on VM at http://172.16.4.202:90/
 
+Service is also running on Render at https://marketplace-1-802i.onrender.com/
+
 Running locally
 1. Clone the repository to your machine
 2. Run npm install to packages
