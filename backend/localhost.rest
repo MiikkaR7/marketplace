@@ -1,3 +1,5 @@
+### GET ROUTES ---
+
 GET http://localhost:5030/health
 
 ###
@@ -10,7 +12,7 @@ GET http://localhost:5030/api/listings/1
 
 ###
 
-GET http://localhost:5030/api/listings/mylistings/bf49461a-95be-45e8-8a56-17f7476a03a0
+GET http://localhost:5030/api/listings/mylistings/{{listingOwner}}
 Authorization: BEARER {{authToken}} 
 
 
@@ -20,7 +22,7 @@ GET http://localhost:5030/api/listings/search/Muumi
 Authorization: BEARER {{authToken}} 
 
 
-###
+### LISTINGS POST ROUTES ---
 POST http://localhost:5030/api/listings 
 Content-Type: application/json
 Authorization: BEARER {{authToken}} 
@@ -30,7 +32,9 @@ Authorization: BEARER {{authToken}}
 "name": "Mariskooli",
 "price": 75.99,
 "description": "Punainen mariskooli",
-"image": "https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg"
+"image": "https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg",
+"owner": "{{listingOwner}}",
+"displayname": "{{listingName}}"
 
 }
 
@@ -45,11 +49,13 @@ Authorization: BEARER {{authToken}}
 "name": "Muumimuki",
 "price": 30.99,
 "description": "Harvinainen kerailyesine",
-"image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560"
+"image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560",
+"owner": "{{listingOwner}}",
+"displayname": "{{listingName}}"
 
 }
 
-###
+### PUT (UPDATE) ROUTE
 
 PUT http://localhost:5030/api/listings 
 Content-Type: application/json
@@ -57,22 +63,22 @@ Authorization: BEARER {{authToken}}
 
 {
 
-"id": 8,
-"name": "Muumimuki",
-"price": 30.99,
-"description": "Harvinainen kerailyesine",
-"image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560"
+"id": 11,
+"name": "Mariskooli",
+"price": 49.99,
+"description": "Punainen mariskooli",
+"image": "https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg"
 
 }
 
-###
+### DELETE ROUTE
 
 DELETE http://localhost:5030/api/listings/15
 Content-Type: application/json
 Authorization: BEARER {{authToken}} 
 
 
-###
+### USER ROUTES
 
 POST http://localhost:5030/api/users/signup 
 Content-Type: application/json
@@ -92,7 +98,7 @@ Content-Type: application/json
 
 
 {
-"email": "restuser@domain.com",
+"email": "restuser2@domain.com",
 "password": "password123"
 }
 
@@ -100,3 +106,5 @@ Content-Type: application/json
 
 
 @authToken = {{login.response.body.token}}
+@listingOwner = {{login.response.body.id}}
+@listingName = {{login.response.body.name}}
