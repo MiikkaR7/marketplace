@@ -3,7 +3,7 @@ import MyListing from './MyListing';
 import './ListingsList.css';
 
 const MyListingsList = props => {
-  return <ul className="listings__list">
+  return <ul className="my__listings__list">
     {props.items.map(listing => 
       <MyListing
         id={listing.id} 
