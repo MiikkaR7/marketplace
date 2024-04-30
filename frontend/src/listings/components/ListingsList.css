@@ -1,7 +1,21 @@
 .listings__list {
+    margin-top: 6rem;
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    margin: 1rem auto;
     padding: 0;
-  }
+    max-width: 64rem;
+}
+
+@media (max-width: 1280px) {
+  .listings__list {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin-left: 15rem;
+    margin-top: 8rem;
+    padding: 0;
+    max-width: 48rem;
+}
+
+}

@@ -129,15 +129,17 @@ const { isLoading, error, data } = useQuery("listingsData", () =>getAllListings(
     <div className="listings__page">
       <h1 className="listings__header">All Marketplace listings</h1>
       <h3 className="listings__tip">Click on an item to see detailed information</h3>
-      <input
-        className="search__bar"
-        type="text"
-        placeholder="Search listings..."
-        value={searchTerm}
-        onChange={handleSearchChange}
-      />
-      <Button onClick={handleSearch}>Search</Button>
-      <Button onClick={clearSearch}>Clear</Button>
+      <div className="search__element">
+        <input
+          className="search__bar"
+          type="text"
+          placeholder="Search listings..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+        <Button onClick={handleSearch}>Search</Button>
+        <Button onClick={clearSearch}>Clear</Button>
+      </div>
       <p className="status__message">{statusMessage}</p>
       <ListingsList items={data}/>
     </div>
