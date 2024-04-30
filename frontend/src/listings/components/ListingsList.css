@@ -1,7 +1,40 @@
 .listings__list {
+  margin-top: 6rem;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  max-width: 64rem;
+}
+
+.my__listings__list {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  max-width: 64rem;
+}
+
+@media (max-width: 1280px) {
+  .listings__list {
+    margin-left: 15rem;
+    margin-top: 8rem;
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    margin: 1rem auto;
     padding: 0;
-  }
+    max-width: 48rem;
+}
+
+  .my__listings__list {
+    margin-left: 15rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    max-width: 64rem;
+}
+
+}

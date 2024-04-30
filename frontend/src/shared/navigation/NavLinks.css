@@ -11,8 +11,6 @@
 
 .nav-links a {
     padding: 1rem;
-    text-decoration: none;
-    color:black;
 }
 
 .nav-links button {
@@ -23,11 +21,12 @@
 
 @media (max-width:1280px) {
     .nav-links {
-        align-items: end;
-        transform: translateX(1rem);
-        margin-top: 8.5rem;
+        margin-top: 15rem;
+        align-items: center;
         list-style: none;
         display: flex;
         flex-direction: column;
+        transform: translate(-1rem, 0);
     }
+
 }

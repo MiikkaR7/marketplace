@@ -74,7 +74,7 @@ return (
   <p>Are you sure? Once it's gone, it's gone!</p>
   </Modal>
 
-  <li className="listing__list">
+  <li className="my__listing__list">
     <ListingView className="my__listing__view">
       <div className="listing__content">
         <div className="listing__image">

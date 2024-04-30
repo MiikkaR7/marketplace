@@ -12,3 +12,16 @@
     border-bottom-width: 4px;
     border-bottom-style: solid;
 }
+
+@media (max-width: 1280px) {
+    .my__listings__header {
+        text-align: left;
+        margin-top: 6rem;
+        margin-left: 15rem;
+        color: black;
+        padding-bottom: 1rem;
+        border-bottom-color: rgb(199, 199, 199);
+        border-bottom-width: 4px;
+        border-bottom-style: solid;
+    }
+}
