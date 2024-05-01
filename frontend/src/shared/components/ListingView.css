@@ -7,3 +7,15 @@
     overflow: hidden;
     background: #ffffff;
   }
+
+@media (max-width: 1280px) {
+
+  .listing__view {
+      list-style-type: none;
+      margin-right: 1rem;
+      max-width: 12rem;
+      max-height: 14rem;
+      margin-bottom: 1rem;
+  }
+
+}

@@ -7,7 +7,6 @@
 }
 
 .listing__image img {
-    width: 100%;
     height: 17rem;
     width: 17rem;
     border-bottom: 1px solid black;
@@ -74,5 +73,53 @@
 
 .listing__modal h4 {
     margin-left: 2rem;                            
+}
+
+@media (max-width: 1280px) {
+
+    .listing__image {
+        transform: translate(0, -1rem);
+        width: 10rem;
+        height: 8rem;
+    }
+
+    .listing__image img {
+        max-width: 10rem;
+        max-height: 10rem;
+    }
+
+    .listing__price {
+        transform: translate(-1rem, 2.5rem);
+        font-size: medium;
+    }
+
+    .listing__info {
+        margin-top: 1rem;
+        font-size: x-small;
+    }
+
+    .listing__modal img {
+        max-width: 15rem;
+        max-height: 20rem;
+        margin-left: 22%;
+        margin-top: 1rem;
+        border-color: rgb(199, 199, 199);
+        border-width: 2px;
+        border-style: solid;                          
+    }
+
+    .listing__modal h3 {
+        margin-left: 2rem;                            
+    }
+
+    .listing__modal h2 {
+        margin-left: 2rem;
+        font-size: medium;                            
+    }
+
+    .listing__modal h4 {
+        margin-left: 2rem;                            
+    }
+
 }
 
