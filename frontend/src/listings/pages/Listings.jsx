@@ -28,16 +28,27 @@ const handleSearchChange = (event) => {
 
 const handleSearch =  async () => {
 
+  setMessage('');
   let response = await findListingsByName(searchTerm);
 
-  if (response.length > 0) {
+  if (response.length > 0 && searchTerm != '') {
+
     setSearchResults(response);
     setSearchState(true);
-    setMessage("Found " + response.length + " result(s)");
+    setMessage('Found ' + response.length + ' results');
 
   } else {
 
+    if (searchTerm == '') {
+
+      console.log("do we get here 2?")
+      setMessage('Enter name of listing to search')
+
+    } else {
+
     setMessage("No results for search " + `\"${searchTerm}\"`);
+
+    }
 
   }
       
@@ -90,15 +101,19 @@ const { isLoading, error, data } = useQuery("listingsData", () =>getAllListings(
     <div className="listings__page">
       <h1 className="listings__header">All Marketplace listings</h1>
       <h3 className="listings__tip">Click on an item to see detailed information</h3>
-      <input
-        className="search__bar"
-        type="text"
-        placeholder="Search listings..."
-        value={searchTerm}
-        onChange={handleSearchChange}
-      />
-      <Button onClick={handleSearch}>Search</Button>
-      <Button onClick={clearSearch}>Clear</Button>
+      <div className="search__element">
+          <input
+            className="search__bar"
+            type="text"
+            placeholder="Search listings..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+          <div className="search__buttons">
+          <Button onClick={handleSearch}>Search</Button>
+          <Button onClick={clearSearch}>Clear</Button>
+          </div>
+      </div>
       <p className="status__message">{statusMessage}</p>
       <ListingsList items={searchResults}/>
     </div>
@@ -111,15 +126,19 @@ const { isLoading, error, data } = useQuery("listingsData", () =>getAllListings(
       <div className="listings__page">
         <h1 className="listings__header">All Marketplace listings</h1>
         <h3 className="listings__tip">Click on an item to see detailed information</h3>
-        <input
+        <div className="search__element">
+          <input
             className="search__bar"
             type="text"
             placeholder="Search listings..."
             value={searchTerm}
             onChange={handleSearchChange}
-        />
-        <Button onClick={handleSearch}>Search</Button>
-        <Button onClick={clearSearch}>Clear</Button>
+          />
+          <div className="search__buttons">
+          <Button onClick={handleSearch}>Search</Button>
+          <Button onClick={clearSearch}>Clear</Button>
+          </div>
+      </div>
         <p className="status__message">{statusMessage}</p>
         <ListingsList items={searchResults}/>
       </div>
@@ -130,15 +149,17 @@ const { isLoading, error, data } = useQuery("listingsData", () =>getAllListings(
       <h1 className="listings__header">All Marketplace listings</h1>
       <h3 className="listings__tip">Click on an item to see detailed information</h3>
       <div className="search__element">
-        <input
-          className="search__bar"
-          type="text"
-          placeholder="Search listings..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-        <Button onClick={handleSearch}>Search</Button>
-        <Button onClick={clearSearch}>Clear</Button>
+          <input
+            className="search__bar"
+            type="text"
+            placeholder="Search listings..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+          <div className="search__buttons">
+          <Button onClick={handleSearch}>Search</Button>
+          <Button onClick={clearSearch}>Clear</Button>
+          </div>
       </div>
       <p className="status__message">{statusMessage}</p>
       <ListingsList items={data}/>
