@@ -1,5 +1,5 @@
 .listings__list {
-  margin-top: 6rem;
+  margin-top: 7rem;
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -19,7 +19,7 @@
 @media (max-width: 1280px) {
   .listings__list {
     margin-left: 15rem;
-    margin-top: 8rem;
+    margin-top: 10rem;
     display: flex;
     flex-wrap: wrap;
     list-style: none;

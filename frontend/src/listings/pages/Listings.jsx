@@ -41,7 +41,6 @@ const handleSearch =  async () => {
 
     if (searchTerm == '') {
 
-      console.log("do we get here 2?")
       setMessage('Enter name of listing to search')
 
     } else {
@@ -84,6 +83,7 @@ const { isLoading, error, data } = useQuery("listingsData", () =>getAllListings(
     <div className="listings__page">
       <h1 className="listings__header">All Marketplace listings</h1>
       <h3 className="listings__tip">Click on an item to see detailed information</h3>
+      <h3 className="listings__tip__2">Log in to purchase and add listings</h3>
       <input
         className="search__bar"
         type="text"
@@ -101,6 +101,7 @@ const { isLoading, error, data } = useQuery("listingsData", () =>getAllListings(
     <div className="listings__page">
       <h1 className="listings__header">All Marketplace listings</h1>
       <h3 className="listings__tip">Click on an item to see detailed information</h3>
+      <h3 className="listings__tip__2">Log in to purchase and add listings</h3>
       <div className="search__element">
           <input
             className="search__bar"
@@ -126,6 +127,7 @@ const { isLoading, error, data } = useQuery("listingsData", () =>getAllListings(
       <div className="listings__page">
         <h1 className="listings__header">All Marketplace listings</h1>
         <h3 className="listings__tip">Click on an item to see detailed information</h3>
+        <h3 className="listings__tip__2">Log in to purchase and add listings</h3>
         <div className="search__element">
           <input
             className="search__bar"
@@ -148,6 +150,7 @@ const { isLoading, error, data } = useQuery("listingsData", () =>getAllListings(
     <div className="listings__page">
       <h1 className="listings__header">All Marketplace listings</h1>
       <h3 className="listings__tip">Click on an item to see detailed information</h3>
+      <h3 className="listings__tip__2">Log in to purchase and add listings</h3>
       <div className="search__element">
           <input
             className="search__bar"
