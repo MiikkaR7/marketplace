@@ -9,3 +9,12 @@
 .error__message {
     font-size: x-large;
 }
+
+@media (max-width: 1280px) {
+
+    .listing__form {
+        margin-top: 8rem;
+        margin-left: 15rem;
+    }
+
+}

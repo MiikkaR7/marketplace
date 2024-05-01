@@ -82,4 +82,11 @@
     .search__buttons {
         transform: translate(-10.5rem, 3.5rem);
     }
+
+    .status__message {
+        max-width: 12rem;
+        transform: translate(16rem, 8rem);
+        text-align: left;
+        font-size: medium;
+    }
 }
