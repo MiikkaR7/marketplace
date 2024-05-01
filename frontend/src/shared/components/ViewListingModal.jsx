@@ -13,7 +13,7 @@ const ModalOverlay = props => {
     <div className={`modal ${props.className}`} style={props.style}>
       <header className={`modal__header ${props.headerClass}`}>
         <h2>{props.header}</h2>
-        <button onClick={props.onClick}>X</button>
+        <button className="modal__close" onClick={props.onClick}>X</button>
       </header>
       <h3>{props.description}</h3>
       <img style={props.style} src={props.img}/>
