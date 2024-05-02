@@ -20,6 +20,11 @@
     padding-bottom: 1rem;
 }
 
+.listings__tip__2 {
+    text-align: left;
+    padding-bottom: 1rem;
+}
+
 .search__element {
     display: flex;
     width: 60rem;
