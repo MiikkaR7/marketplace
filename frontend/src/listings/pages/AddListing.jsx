@@ -27,7 +27,13 @@ const imageRef = useRef();
 
 const createListingMutation = useMutation({
 
-    mutationFn: createListing
+    mutationFn: createListing,
+    onSuccess:() => {
+      alert.show('SUCCESSFULLY CREATED LISTING', {type: 'success'});
+    },
+    onError:() => {
+      alert.show('ERROR CREATING LISTING', {type: 'error'});
+    }
 
 })
 
@@ -43,8 +49,6 @@ const ListingSubmitHandler = async event => {
     displayname: auth.userName,
     token: auth.token
   })
-
-  alert.show('SUCCESSFULLY CREATED LISTING', {type: 'success'});
 
   navigate('/');
 
