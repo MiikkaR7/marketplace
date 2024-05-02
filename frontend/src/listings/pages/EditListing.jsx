@@ -65,7 +65,13 @@ const imageRef = useRef();
 
 const updateListingMutation = useMutation({
 
-    mutationFn: updateListing
+    mutationFn: updateListing,
+    onSuccess:() => {
+      alert.show('SUCCESSFULLY EDITED LISTING', {type: 'success'});
+    },
+    onError:() => {
+      alert.show('ERROR EDITING LISTING', {type: 'error'});
+    }
 
 });
 
@@ -75,7 +81,27 @@ const ListingSubmitHandler = async event => {
 
   event.preventDefault();
 
-  alert.show('EDIT SUCCESSFUL', {type: 'success'});
+  //Input validation
+
+  if (nameRef.current.value.length < 3) {
+    alert.show('ERROR EDITING LISTING, CHECK NAME', {type: 'error'});
+    return;
+  }
+
+  if (priceRef.current.value < 0.01) {
+    alert.show('ERROR EDITING LISTING, CHECK PRICE', {type: 'error'});
+    return;
+  }
+
+  if (descriptionRef.current.value.length < 1) {
+    alert.show('ERROR EDITING LISTING, CHECK DESCRIPTION', {type: 'error'});
+    return;
+  }
+
+  if (imageRef.current.value.length < 1) {
+    alert.show('ERROR EDITING LISTING, CHECK IMAGE', {type: 'error'});
+    return;
+  }
 
   updateListingMutation.mutate({
     id: id,
