@@ -2,8 +2,6 @@
 # Final Project - Miikka Riipi
 Web Programming - Final Project
 
-Service is currently NOT running on VM at http://172.16.4.202:90/
-
 Service is running on Render at https://two024-final-project-miikkar7-frontend.onrender.com/
 
 Running locally
