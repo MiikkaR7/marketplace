@@ -16,10 +16,6 @@ GET http://localhost:5030/api/listings/owner/1
 
 ###
 
-GET http://localhost:5030/api/users/user/c7b01c38-1c84-4ebb-a415-913250c27fc6
-
-###
-
 GET http://localhost:5030/api/listings/mylistings/{{listingOwner}}
 Authorization: BEARER {{authToken}} 
 
@@ -31,22 +27,6 @@ Authorization: BEARER {{authToken}}
 
 
 ### LISTINGS POST ROUTES ---
-POST http://localhost:5030/api/listings 
-Content-Type: application/json
-Authorization: BEARER {{authToken}} 
-
-{
-
-"name": "Mariskooli",
-"price": 75.99,
-"description": "Punainen mariskooli",
-"image": "https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg",
-"owner": "{{listingOwner}}",
-"displayname": "{{listingName}}"
-
-}
-
-###
 
 POST http://localhost:5030/api/listings 
 Content-Type: application/json
@@ -71,17 +51,17 @@ Authorization: BEARER {{authToken}}
 
 {
 
-"id": 13,
-"name": "Mariskooli",
+"id": 1,
+"name": "Muumimuki",
 "price": 49.99,
-"description": "Punainen mariskooli",
-"image": "https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg"
+"description": "Ei niin harvinainen kerailyesine",
+"image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560"
 
 }
 
 ### DELETE ROUTE
 
-DELETE http://localhost:5030/api/listings/c7b01c38-1c84-4ebb-a415-913250c27fc6/19
+DELETE http://localhost:5030/api/listings/{{listingOwner}}/1
 Content-Type: application/json
 Authorization: BEARER {{authToken}} 
 
@@ -92,8 +72,8 @@ POST http://localhost:5030/api/users/signup
 Content-Type: application/json
 
 {
-"name": "Restuser2",
-"email": "restuser2@domain.com",
+"name": "Restuser",
+"email": "restuser@domain.com",
 "password": "password123"
 }
 
@@ -106,7 +86,7 @@ Content-Type: application/json
 
 
 {
-"email": "restuser2@domain.com",
+"email": "restuser@domain.com",
 "password": "password123"
 }
 

@@ -15,25 +15,6 @@ GET http://172.16.4.202:5030/api/listings/1
 GET http://172.16.4.202:5030/api/listings/mylistings/{{listingOwner}}
 Authorization: BEARER {{authToken}} 
 
-### Render
-
-GET https://marketplace-backend-wh8c.onrender.com/health
-
-###
-
-GET https://marketplace-backend-wh8c.onrender.com/api/listings
-
-###
-
-GET https://marketplace-backend-wh8c.onrender.com/api/listings/1
-
-###
-
-GET https://marketplace-backend-wh8c.onrender.com/api/listings/mylistings/{{listingOwner}}
-Authorization: BEARER {{authToken}} 
-
-###
-
 ### POST ROUTE
 
 POST http://172.16.4.202:5030/api/listings 
@@ -67,44 +48,6 @@ Authorization: BEARER {{authToken}}
 
 }
 
-### Render
-
-POST https://marketplace-backend-wh8c.onrender.com/api/listings 
-Content-Type: application/json
-Authorization: BEARER {{authToken}} 
-
-{
-
-"name": "Muumimuki 2",
-"price": 29.99,
-"description": "Ei niin harvinainen muumimuki",
-"image": "https://www.sask.fi/wp-content/uploads/2023/12/Muumimuki-haisuli-500px.jpg",
-"owner": "{{listingOwner}}",
-"displayname": "{{listingName}}"
-
-}
-
-###
-
-PUT https://marketplace-backend-wh8c.onrender.com/api/listings 
-Content-Type: application/json
-Authorization: BEARER {{authToken}} 
-
-{
-
-"id": 2,
-"name": "Muumimuki 2",
-"price": 49.99,
-"description": "Ei niin harvinainen muumimuki",
-"image": "https://www.sask.fi/wp-content/uploads/2023/12/Muumimuki-haisuli-500px.jpg"
-
-}
-
-### DELETE
-
-DELETE https://marketplace-backend-wh8c.onrender.com/api/listings/1
-Authorization: BEARER {{authToken}}
-
 ###
 
 //SIGN UP + LOG IN -------------------------------------------------------------------------------------------------
@@ -131,30 +74,7 @@ Content-Type: application/json
 "password": "password123"
 }
 
-### Render
-
-POST https://marketplace-backend-wh8c.onrender.com/api/users/signup
-Content-Type: application/json
-
-{
-"name": "Restuser",
-"email": "restuser@domain.com",
-"password": "password123"
-}
-
-###
-
-# @name login
-
-POST https://marketplace-backend-wh8c.onrender.com/api/users/login
-Content-Type: application/json
-
-{
-"email": "restuser@domain.com",
-"password": "password123"
-}
-
-###
+### 
 
 @authToken = {{login.response.body.token}}
 @listingOwner = {{login.response.body.id}}
