@@ -2,8 +2,8 @@ POST https://two024-final-project-miikkar7-backend.onrender.com/api/users/signup
 Content-Type: application/json
 
 {
-"name": "Restuser",
-"email": "restuser@domain.com",
+"name": "Miikka",
+"email": "miikka@domain.com",
 "password": "password123"
 }
 
@@ -15,7 +15,7 @@ POST https://two024-final-project-miikkar7-backend.onrender.com/api/users/login
 Content-Type: application/json
 
 {
-"email": "restuser@domain.com",
+"email": "miikka@domain.com",
 "password": "password123"
 }
 
