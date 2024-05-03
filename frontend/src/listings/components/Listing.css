@@ -1,9 +1,10 @@
 .listing__content {
-    padding: 0;
+    margin: auto;
 }
 
 .listing__image {
     position: relative;
+    height: 17rem;
 }
 
 .listing__image img {
@@ -28,29 +29,29 @@
 }
 
 .listing__price {
-    position: absolute;
-    bottom: 0rem;
-    left: 1.5rem;
     text-align: left;
+    font-size: xx-large;
     color: rgb(0, 0, 0);
-    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: rgb(255, 255, 255);
+    transform: translate(2rem, -5rem);
 }
 
 .listing__info {
-    text-align: left;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    max-width: 17rem;
+    max-height: 6rem;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.listing__info h2 {
+.listing__info__name {
+    width: 15rem;
+    font-size: x-large;
+    font-weight: bold;
+    text-align: center;
     word-wrap: break-word;
-}
-
-.listing__buttons {
-    margin-left: 1rem;
-    margin-bottom: 1rem;
 }
 
 .listing__modal img {
@@ -77,25 +78,36 @@
 
 @media (max-width: 1280px) {
 
-    .listing__image {
+    .listing__content {
+        margin: auto;
+        height: 12rem;
         transform: translate(0, -1rem);
-        width: 10rem;
-        height: 8rem;
+    }
+
+    .listing__image {
+        transform: translate(-0.15rem);
+        width: 12rem;
+        height: 9rem;
     }
 
     .listing__image img {
         max-width: 10rem;
-        max-height: 10rem;
+        max-height: 9rem;
+        transform: translate(0, 0.5rem);
     }
 
     .listing__price {
-        transform: translate(-1rem, 2.5rem);
-        font-size: medium;
+        text-align: left;
+        font-size: larger;
+        color: rgb(0, 0, 0);
+        -webkit-text-stroke-width: 0.25px;
+        -webkit-text-stroke-color: rgb(255, 255, 255);
+        transform: translate(1.5rem, -3.5rem);
     }
 
-    .listing__info {
-        margin-top: 1rem;
-        font-size: x-small;
+    .listing__info__name {
+        margin-top: 1.25rem;
+        font-size: small;
     }
 
     .listing__modal img {
@@ -119,6 +131,18 @@
 
     .listing__modal h4 {
         margin-left: 2rem;                            
+    }
+
+    .listing__buttons {
+       transform: translate(0, -1rem);
+    }
+
+    .listing__button {
+        width: 4rem;
+    }
+
+    .listing__button__danger {
+        width: 4rem;
     }
 
 }

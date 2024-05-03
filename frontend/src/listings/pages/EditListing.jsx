@@ -22,11 +22,11 @@ const alert = useAlert();
 
 let Content;
 
-//Shortcut to My listings -page
+//Shortcut to Listings page
 
-const toMyListings = () => {
+const toListings = () => {
 
-  navigate('/mylistings');
+  navigate('/');
 
 }
 
@@ -88,6 +88,11 @@ const ListingSubmitHandler = async event => {
     return;
   }
 
+  if (nameRef.current.value.length > 30) {
+    alert.show('ERROR EDITING LISTING, NAME TOO LONG', {type: 'error'});
+    return;
+  }
+
   if (priceRef.current.value < 0.01) {
     alert.show('ERROR EDITING LISTING, CHECK PRICE', {type: 'error'});
     return;
@@ -134,7 +139,7 @@ if (auth.isLoggedIn == true && auth.userId == listingData.owner) return (
       <Button type="submit">
       Submit Edits
       </Button>
-      <Button danger onClick={toMyListings}>
+      <Button danger onClick={toListings}>
       Cancel
       </Button>
     </form>

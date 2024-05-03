@@ -56,3 +56,23 @@
   .button--big {
     font-size: 1.5rem;
   }
+
+  @media (max-width: 800px) {
+    .button {
+      font: inherit;
+      font-size: small;
+      padding: 0;
+      border: 1px solid #000000;
+      min-height: 1rem;
+      min-width: 3rem;
+      background: #ffffff;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+      margin: auto;
+      margin-right: 0.5rem;
+      margin-left: 0.5rem;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+    }
+  }
