@@ -77,17 +77,15 @@ return (
 
   <li className="my__listing__list">
     <ListingView className="my__listing__view">
-      <div className="listing__content">
-        <div className="listing__image">
+      <div className="my__listing__content">
+        <div className="my__listing__image">
           <img src={props.image} alt={props.description} />
-          <div className="listing__price">
-            <h3>{props.price} €</h3>
-          </div>
+          <p className="my__listing__price">{props.price} €</p>
         </div>
-        <div className="listing__info">
-          <h2>{props.name}</h2>
+        <div className="my__listing__info">
+          <p className="my__listing__info__name">{props.name}</p>
         </div>
-        <div className="listing__buttons">
+        <div className="my__listing__buttons">
           <Button onClick={toUpdatePage}>Edit</Button>
           <Button id="delete-button" danger onClick={showConfirmationHandler}>Delete</Button>
         </div>
