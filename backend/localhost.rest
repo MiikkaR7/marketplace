@@ -12,6 +12,14 @@ GET http://localhost:5030/api/listings/1
 
 ###
 
+GET http://localhost:5030/api/listings/owner/1
+
+###
+
+GET http://localhost:5030/api/users/user/restuser2@domain.com
+
+###
+
 GET http://localhost:5030/api/listings/mylistings/{{listingOwner}}
 Authorization: BEARER {{authToken}} 
 
@@ -63,7 +71,7 @@ Authorization: BEARER {{authToken}}
 
 {
 
-"id": 11,
+"id": 13,
 "name": "Mariskooli",
 "price": 49.99,
 "description": "Punainen mariskooli",
@@ -73,7 +81,7 @@ Authorization: BEARER {{authToken}}
 
 ### DELETE ROUTE
 
-DELETE http://localhost:5030/api/listings/15
+DELETE http://localhost:5030/api/listings/restuser2@domain.com/17
 Content-Type: application/json
 Authorization: BEARER {{authToken}} 
 

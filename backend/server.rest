@@ -100,6 +100,11 @@ Authorization: BEARER {{authToken}}
 
 }
 
+### DELETE
+
+DELETE https://marketplace-backend-wh8c.onrender.com/api/listings/1
+Authorization: BEARER {{authToken}}
+
 ###
 
 //SIGN UP + LOG IN -------------------------------------------------------------------------------------------------
@@ -136,6 +141,8 @@ Content-Type: application/json
 "email": "restuser@domain.com",
 "password": "password123"
 }
+
+###
 
 # @name login
 
