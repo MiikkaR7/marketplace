@@ -10,7 +10,9 @@ app.use(cors({
       'http://localhost:5172',
       'http://localhost:5030',
       'http://172.16.4.202:8080',
-      'http://172.16.4.202:90'
+      'http://172.16.4.202:90',
+      'https://two024-final-project-miikkar7-frontend.onrender.com',
+      'https://two024-final-project-miikkar7-backend.onrender.com'
     ]
   }));
 
