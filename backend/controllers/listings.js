@@ -183,11 +183,11 @@ const deleteListing = async (req, res) => {
      try {
 
         const id = parseInt(req.params.id);
-        const email = req.params.email;
+        const user = req.params.user;
         
         const ownerResponse = await listings.findListingOwnerById(id);
 
-        const emailResponse = await users.findIdByEmail(email);
+        const emailResponse = await users.findIdByEmail(user);
 
         if (emailResponse[0].id == ownerResponse[0].owner) {
 

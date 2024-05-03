@@ -16,7 +16,7 @@ GET http://localhost:5030/api/listings/owner/1
 
 ###
 
-GET http://localhost:5030/api/users/user/restuser2@domain.com
+GET http://localhost:5030/api/users/user/c7b01c38-1c84-4ebb-a415-913250c27fc6
 
 ###
 
@@ -81,7 +81,7 @@ Authorization: BEARER {{authToken}}
 
 ### DELETE ROUTE
 
-DELETE http://localhost:5030/api/listings/restuser2@domain.com/17
+DELETE http://localhost:5030/api/listings/c7b01c38-1c84-4ebb-a415-913250c27fc6/19
 Content-Type: application/json
 Authorization: BEARER {{authToken}} 
 

@@ -137,11 +137,11 @@ const loginUser = async (req, res) => {
 
 const getIdByEmail = async (req, res) => {
 
-  const email = req.params.email;
-  console.log(req.params.email);
+  const user = req.params.user;
+  console.log(req.params.user);
   try {
 
-    const response = await users.findIdByEmail(email);
+    const response = await users.findIdByEmail(user);
 
     if (response.length === 1) {
 

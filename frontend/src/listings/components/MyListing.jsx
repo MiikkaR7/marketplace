@@ -31,9 +31,11 @@ const deleteListingMutation = useMutation({
   mutationFn: deleteListingById,
   onSuccess: (data) => {
     console.log(data);
+    alert.show('SUCCESSFULLY DELETED LISTING', {type: 'success'});
   },
   onError: (error) => {
     console.log(error);
+    alert.show('COULD NOT DELETE LISTING', {type: 'error'});
   }
 })
 
@@ -41,10 +43,9 @@ const deleteConfirmedHandler = () => {
 
   setConfirmationModal(false);
 
-  alert.show('SUCCESSFULLY DELETED LISTING', {type: 'success'});
-
   deleteListingMutation.mutate({
     id: props.id,
+    user: auth.userId,
     token: auth.token
   })
 

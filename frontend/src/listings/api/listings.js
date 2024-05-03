@@ -86,9 +86,9 @@ export const updateListing = async ({id, name, price, description, image, token}
 
 //delete listing
 
-export const deleteListingById = async ({id, token}) => {
+export const deleteListingById = async ({id, user, token}) => {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/api/listings/${id}`, 
+    `${import.meta.env.VITE_API_URL}/api/listings/${user}/${id}`, 
     {
       method: 'DELETE',
       headers: {

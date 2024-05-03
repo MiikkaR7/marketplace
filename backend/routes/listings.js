@@ -14,6 +14,6 @@ router.use(verifyToken);
 router.get('/mylistings/:owner', getListingsbyOwner);
 router.post('/', createNewListing);
 router.put('/', updateListingById);
-router.delete('/:email/:id', deleteListing);
+router.delete('/:user/:id', deleteListing);
 
 module.exports = router;
