@@ -24,7 +24,7 @@ const loggedInUser = {
         .post('/api/users/signup')
         .set('Accept', 'application/json')
         .send(data)
-      loggedInUser.userId = response.body.userId
+      loggedInUser.userId = response.body.id
       loggedInUser.email = response.body.email
       loggedInUser.token = response.body.token
 
@@ -136,7 +136,7 @@ describe('POST listings endpoint', () => {
         expect(response.body.price).toEqual(60.99);
         expect(response.body.description).toEqual('Punainen mariskooli');
         expect(response.body.image).toEqual('https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg');
-        expect(response.body.owner).toEqual('ADMIN-0000-0000-0000-000000000000000');
+        expect(response.body.owner).toEqual(loggedInUser.userId);
         expect(response.body.displayname).toEqual('Admin');
     });
 
@@ -293,7 +293,7 @@ describe('DELETE listings endpoint', () => {
 
     const response = await request(app)
 
-    .delete(`/api/listings/${loggedInUser.userId}/1`)
+    .delete(`/api/listings/${loggedInUser.userId}/2`)
     .set('Authorization', 'Bearer ' + loggedInUser.token)
     .set('Accept','application/json')
     .set('Content','application/json')
