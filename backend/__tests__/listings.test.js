@@ -118,7 +118,7 @@ describe('POST listings endpoint', () => {
           price: 60.99,
           description: 'Punainen mariskooli',
           image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
-          owner: 'ADMIN-0000-0000-0000-000000000000000',
+          owner: loggedInUser.userId,
           displayname: 'Admin'
         };
 
@@ -146,7 +146,7 @@ describe('POST listings endpoint', () => {
         price: 60.99,
         description: 'Punainen mariskooli',
         image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
-        owner: 'TEST1-0000-0000-0000-000000000000000',
+        owner: loggedInUser.userId,
         displayname: 'Admin'
       };
 
@@ -165,7 +165,7 @@ describe('POST listings endpoint', () => {
         price: 60.99,
         description: 'Punainen mariskooli',
         image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
-        owner: 'TEST1-0000-0000-0000-000000000000000',
+        owner: loggedInUser.userId,
         displayname: 'Admin'
       };
 
@@ -184,7 +184,7 @@ describe('POST listings endpoint', () => {
         name: 'Testiesine',
         description: 'Testiesine',
         image: 'https://images.stockmann.com/products/a002149684516129274055d229837ab49685e0be/550x734/112356910_1.jpg',
-        owner: 'TEST1-0000-0000-0000-000000000000000',
+        owner: loggedInUser.userId,
         displayname: 'Admin'
       };
 
@@ -293,7 +293,7 @@ describe('DELETE listings endpoint', () => {
 
     const response = await request(app)
 
-    .delete('/api/listings/ADMIN-0000-0000-0000-000000000000000/1')
+    .delete(`/api/listings/${loggedInUser.userId}/1`)
     .set('Authorization', 'Bearer ' + loggedInUser.token)
     .set('Accept','application/json')
     .set('Content','application/json')
