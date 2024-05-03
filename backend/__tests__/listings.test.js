@@ -293,7 +293,7 @@ describe('DELETE listings endpoint', () => {
 
     const response = await request(app)
 
-    .delete('/api/listings/TEST1-0000-0000-0000-000000000000000/1')
+    .delete('/api/listings/ADMIN-0000-0000-0000-000000000000000/1')
     .set('Authorization', 'Bearer ' + loggedInUser.token)
     .set('Accept','application/json')
     .set('Content','application/json')
