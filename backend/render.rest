@@ -1,0 +1,81 @@
+POST https://two024-final-project-miikkar7-backend.onrender.com/api/users/signup
+Content-Type: application/json
+
+{
+"name": "Restuser",
+"email": "restuser@domain.com",
+"password": "password123"
+}
+
+###
+
+# @name login
+
+POST https://two024-final-project-miikkar7-backend.onrender.com/api/users/login
+Content-Type: application/json
+
+{
+"email": "restuser@domain.com",
+"password": "password123"
+}
+
+###
+
+@authToken = {{login.response.body.token}}
+@listingOwner = {{login.response.body.id}}
+@listingName = {{login.response.body.name}}
+
+GET https://two024-final-project-miikkar7-backend.onrender.com/health
+
+###
+
+GET https://two024-final-project-miikkar7-backend.onrender.com/api/listings
+
+###
+
+GET https://two024-final-project-miikkar7-backend.onrender.com/api/listings/1
+
+###
+
+GET https://two024-final-project-miikkar7-backend.onrender.com/api/listings/mylistings/{{listingOwner}}
+Authorization: BEARER {{authToken}} 
+
+###
+
+POST https://two024-final-project-miikkar7-backend.onrender.com/api/listings 
+Content-Type: application/json
+Authorization: BEARER {{authToken}} 
+
+{
+
+"name": "Muumimuki",
+"price": 29.99,
+"description": "Ei niin harvinainen muumimuki",
+"image": "https://www.sask.fi/wp-content/uploads/2023/12/Muumimuki-haisuli-500px.jpg",
+"owner": "{{listingOwner}}",
+"displayname": "{{listingName}}"
+
+}
+
+###
+
+PUT https://two024-final-project-miikkar7-backend.onrender.com/api/listings 
+Content-Type: application/json
+Authorization: BEARER {{authToken}} 
+
+{
+
+"id": 1,
+"name": "Muumimuki",
+"price": 39.99,
+"description": "Harvinainen muumimuki",
+"image": "https://www.sask.fi/wp-content/uploads/2023/12/Muumimuki-haisuli-500px.jpg"
+
+}
+
+###
+
+DELETE https://marketplace-backend-wh8c.onrender.com/api/{{listingOwner}}/1
+Authorization: BEARER {{authToken}}
+
+###
