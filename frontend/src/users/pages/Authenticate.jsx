@@ -85,7 +85,7 @@ const Authenticate = (props) => {
     return (
         <>
             <div className='authentication'>
-                {!isLoginMode ? <h1>Sign Up</h1> : <h1>Login</h1>}
+                {!isLoginMode ? <h1 className="auth__header">Sign Up</h1> : <h1 className="auth__header">Login</h1>}
                 <div className="auth__form">
                     <form className="auth__fields" onSubmit={onSubmitHandler}>
                         {!isLoginMode && <Input id="name" ref={nameRef} type="text" label="Name: "/>}
