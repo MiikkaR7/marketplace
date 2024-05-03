@@ -1,6 +1,7 @@
 const Joi = require('joi');
 
 const listings = require('../models/listings');
+const users = require('../models/users');
 
 //Input validation
 
@@ -43,6 +44,23 @@ const getListingById = async (req, res) => {
         const response = await listings.findListingById(id);
         if (response.length === 1) {
             res.status(200).json(response[0]);
+        }
+        else {
+            res.status(400).json("Listing does not exist");
+        }
+    } catch (error) {
+        res.status(500).json("Something went wrong");
+    }
+
+}
+
+const getListingOwnerById = async (req, res) => {
+
+    try {
+        const id = parseInt(req.params.id);
+        const response = await listings.findListingOwnerById(id);
+        if (response.length === 1) {
+            res.status(200).json(response[0].owner);
         }
         else {
             res.status(400).json("Listing does not exist");
@@ -161,16 +179,29 @@ const updateListingById = async (req, res) => {
 //Delete listing
 
 const deleteListing = async (req, res) => {
-    try {
-        
-        const id = parseInt(req.params.id);
-        const response = await listings.deleteListingById(id);
 
-        if (response.affectedRows === 1) {
+     try {
+
+        const id = parseInt(req.params.id);
+        const user = req.params.user;
+        
+        const ownerResponse = await listings.findListingOwnerById(id);
+
+        const emailResponse = await users.findIdByEmail(user);
+
+        if (emailResponse[0].id == ownerResponse[0].owner) {
+
+            const response = await listings.deleteListingById(id);
+
+            if (response.affectedRows === 1) {
             res.status(200).json({message: "Listing deleted succesfully"});
-        } else {
-            res.status(400).json({message: "Listing not found"});
-        }
+            } 
+
+        } else if (emailResponse[0].id != ownerResponse[0].owner) {
+
+            res.status(401).json({message: "You do not own the listing you are trying to delete!"});
+
+        } 
 
     } catch (error) {
         res.status(500).json("Something went wrong");
@@ -184,6 +215,7 @@ module.exports = {
     updateListingById,
     deleteListing,
     getListingById,
+    getListingOwnerById,
     getListingsbyOwner,
     getListingsByName
-  };
+  };    

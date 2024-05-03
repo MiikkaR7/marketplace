@@ -134,7 +134,34 @@ const loginUser = async (req, res) => {
     return res.status(500).json({ message: "Something went wrong with login" });
   }
 }
+
+const getIdByEmail = async (req, res) => {
+
+  const user = req.params.user;
+  console.log(req.params.user);
+  try {
+
+    const response = await users.findIdByEmail(user);
+
+    if (response.length === 1) {
+
+      res.status(200).json(response[0].id);
+
+    }
+
+    else {
+
+      res.status(400).json("User doesn't exist");
+
+    }
+  
+  } catch (error) {
+      res.status(500).json("Something went wrong");
+  }
+
+}
 module.exports = {
   loginUser,
-  signUpUser
+  signUpUser,
+  getIdByEmail
 }

@@ -33,6 +33,16 @@ const users = {
     } catch (error) {
       throw new Error(error);
     }
+  },
+  findIdByEmail: async (user) => {
+    try {
+      const selectQuery = 'SELECT `id` FROM `users` WHERE id=?';
+      const connection = await pool.getConnection();
+      const [results] = await connection.query(selectQuery, [user]);
+      return results;
+    } catch (error) {
+      throw new Error(error);
+    }
   }
 };
 module.exports = users;
