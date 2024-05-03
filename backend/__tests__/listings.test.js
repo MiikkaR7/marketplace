@@ -287,6 +287,22 @@ describe('PUT listings endpoint', () => {
 
 });
 
+describe('DELETE listings endpoint', () => {
+
+  test('should delete listing with provided user and id', async () => {
+
+    const response = await request(app)
+
+    .delete('/api/listings/TEST1-0000-0000-0000-000000000000000/1')
+    .set('Authorization', 'Bearer ' + loggedInUser.token)
+    .set('Accept','application/json')
+    .set('Content','application/json')
+
+    expect(response.status).toEqual(200);
+  });
+
+});
+
 // End and close the pool 
 afterAll(async() => {
     const result = await pool.end();
