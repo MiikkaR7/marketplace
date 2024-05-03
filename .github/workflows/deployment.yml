@@ -57,9 +57,24 @@ jobs:
           context: ./frontend
           file: ./frontend/Dockerfile
           push: true
-          tags: "${{ env.REGISTRY }}/${{ env.FRONTEND_IMAGE_NAME }}"    
+          tags: "${{ env.REGISTRY }}/${{ env.FRONTEND_IMAGE_NAME }}"
 
-  deploy: 
+  render-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy frontend to Render
+        env:
+          deploy_url: ${{ secrets.RENDER_FRONTEND_HOOK }}
+        run: |
+          curl "$deploy_url"
+
+      - name: Deploy backend to Render
+        env: 
+          deploy_url: ${{ secrets.RENDER_BACKEND_HOOK }}
+        run: |
+          curl "$deploy_url"
+
+  vm-deploy: 
     name: Server Deployment
     timeout-minutes: 5
     runs-on: ubuntu-latest
