@@ -60,6 +60,7 @@ jobs:
           tags: "${{ env.REGISTRY }}/${{ env.FRONTEND_IMAGE_NAME }}"
 
   render-deploy:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Deploy frontend to Render
