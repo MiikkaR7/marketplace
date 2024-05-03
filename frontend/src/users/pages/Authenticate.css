@@ -32,14 +32,17 @@
 }
 
 @media (max-width: 1280px) {
-    .authentication {
-        margin-top: 8rem;
+    .auth__form {
+        margin: auto;
         margin-left: 15rem;
-        align-content: center;
+        border: 1px solid black;
+        width: 45%;
+        height: 28rem;
     }
 
     .auth__header {
         text-align: left;
+        margin-left: 15rem;
     }
 }
 
