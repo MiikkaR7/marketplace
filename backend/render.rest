@@ -27,7 +27,7 @@ Content-Type: application/json
 @listingOwner = {{login.response.body.id}}
 @listingName = {{login.response.body.name}}
 
-### GET REQUESTS (HEALTH CHECK, ALL LISTINGS, INDIVIDUAL LISTING, LISTINGS BY OWNER
+### GET REQUESTS (HEALTH CHECK, ALL LISTINGS, INDIVIDUAL LISTING, LISTINGS BY OWNER, SEARCH LISTING BY NAME
 
 GET https://two024-final-project-miikkar7-backend.onrender.com/health
 
@@ -43,6 +43,10 @@ GET https://two024-final-project-miikkar7-backend.onrender.com/api/listings/1
 
 GET https://two024-final-project-miikkar7-backend.onrender.com/api/listings/mylistings/{{listingOwner}}
 Authorization: BEARER {{authToken}} 
+
+###
+
+GET https://two024-final-project-miikkar7-backend.onrender.com/api/listings/search/Muumi
 
 ### POST REQUEST
 

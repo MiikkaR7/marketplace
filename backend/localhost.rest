@@ -1,72 +1,4 @@
-### GET ROUTES ---
-
-GET http://localhost:5030/health
-
-###
-
-GET http://localhost:5030/api/listings
-
-###
-
-GET http://localhost:5030/api/listings/1
-
-###
-
-GET http://localhost:5030/api/listings/owner/1
-
-###
-
-GET http://localhost:5030/api/listings/mylistings/{{listingOwner}}
-Authorization: BEARER {{authToken}} 
-
-
-###
-
-GET http://localhost:5030/api/listings/search/Muumi
-Authorization: BEARER {{authToken}} 
-
-
-### LISTINGS POST ROUTES ---
-
-POST http://localhost:5030/api/listings 
-Content-Type: application/json
-Authorization: BEARER {{authToken}} 
-
-{
-
-"name": "Muumimuki",
-"price": 30.99,
-"description": "Harvinainen kerailyesine",
-"image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560",
-"owner": "{{listingOwner}}",
-"displayname": "{{listingName}}"
-
-}
-
-### PUT (UPDATE) ROUTE
-
-PUT http://localhost:5030/api/listings 
-Content-Type: application/json
-Authorization: BEARER {{authToken}} 
-
-{
-
-"id": 1,
-"name": "Muumimuki",
-"price": 49.99,
-"description": "Ei niin harvinainen kerailyesine",
-"image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560"
-
-}
-
-### DELETE ROUTE
-
-DELETE http://localhost:5030/api/listings/{{listingOwner}}/1
-Content-Type: application/json
-Authorization: BEARER {{authToken}} 
-
-
-### USER ROUTES
+### LOG IN + SIGN UP
 
 POST http://localhost:5030/api/users/signup 
 Content-Type: application/json
@@ -84,15 +16,75 @@ Content-Type: application/json
 POST http://localhost:5030/api/users/login 
 Content-Type: application/json
 
-
 {
 "email": "restuser@domain.com",
 "password": "password123"
 }
 
-###
-
+### REFERENCES FOR REQUESTS
 
 @authToken = {{login.response.body.token}}
 @listingOwner = {{login.response.body.id}}
 @listingName = {{login.response.body.name}}
+
+### GET REQUESTS (HEALTH CHECK, ALL LISTINGS, INDIVIDUAL LISTING, LISTINGS BY OWNER, SEARCH LISTING BY NAME
+
+GET http://localhost:5030/health
+
+###
+
+GET http://localhost:5030/api/listings
+
+###
+
+GET http://localhost:5030/api/listings/1
+
+###
+
+GET http://localhost:5030/api/listings/mylistings/{{listingOwner}}
+Authorization: BEARER {{authToken}} 
+
+###
+
+GET http://localhost:5030/api/listings/search/Muumi
+Authorization: BEARER {{authToken}} 
+
+### POST REQUEST
+
+POST http://localhost:5030/api/listings 
+Content-Type: application/json
+Authorization: BEARER {{authToken}} 
+
+{
+
+"name": "Muumimuki",
+"price": 30.99,
+"description": "Harvinainen kerailyesine",
+"image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560",
+"owner": "{{listingOwner}}",
+"displayname": "{{listingName}}"
+
+}
+
+### UPDATE REQUEST
+
+PUT http://localhost:5030/api/listings 
+Content-Type: application/json
+Authorization: BEARER {{authToken}} 
+
+{
+
+"id": 1,
+"name": "Muumimuki",
+"price": 49.99,
+"description": "Ei niin harvinainen kerailyesine",
+"image": "https://finmug.fi/cdn/shop/files/Muumimukipiisamirottaluolassa1.webp?v=1707208560"
+
+}
+
+### DELETE REQUEST
+
+DELETE http://localhost:5030/api/listings/{{listingOwner}}/1
+Content-Type: application/json
+Authorization: BEARER {{authToken}} 
+
