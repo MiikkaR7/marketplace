@@ -6,8 +6,7 @@ Service is running on Render at https://two024-final-project-miikkar7-frontend.o
 
 Running locally
 1. Clone the repository to your machine
-2. Run `npm install` to install packages & dependencies
-3. `cd` into /backend and create an ENV file containing the following lines:
+2. `cd` into /backend, run `npm install` and create an ENV file containing the following lines:
 ```
 PORT=5030  
 MYSQL_HOST=127.0.0.1  
@@ -17,13 +16,13 @@ MYSQL_DATABASE=listings_db
 MYSQL_PORT=3306  
 JWT_KEY=my_listings_secret_key  
 ```
-4. `cd` into /frontend and create an ENV file containing the following line:
+3. `cd` into /frontend, run `npm install` and create an ENV file containing the following line:
 ```
 VITE_API_URL=http://localhost:5030    
 ```
-5. Run `docker-compose up` in root directory to start up the database
-6. Run `npm run dev` in /frontend and /backend to start the services respectively
-7. Application should then be running on http://localhost:5172
+4. Run `docker-compose up` in root directory to start up the database
+5. Run `npm run dev` in /frontend and /backend to start the services respectively
+6. Application should then be running on http://localhost:5172
 
 ## Documentation
 
