@@ -29,13 +29,13 @@ VITE_API_URL=http://localhost:5030
 
 ### Technologies / stack
 
-The project is based on the practice project and thus uses the same stack.
-Node.js - Express backend
-React - Vite frontend
-mySQL database
-Backend tests with jest + supertest libraries
-Project uses the Git feature branching strategy
-Github actions for automated tests for feature branches and deployment to server when merged to main (production)
+The project is based on the practice project and thus uses the same stack.  
+Node.js - Express backend  
+React - Vite frontend  
+mySQL database  
+Backend tests with jest + supertest libraries  
+Project uses the Git feature branching strategy  
+Github actions for automated tests for feature branches and deployment to server when merged to main (production)  
 
 ### Use cases
 
