@@ -40,6 +40,37 @@ const createListingMutation = useMutation({
 const ListingSubmitHandler = async event => {
 
   event.preventDefault();
+
+  if (nameRef.current.value.length < 3) {
+    alert.show('ERROR CREATING LISTING, CHECK NAME', {type: 'error'});
+    return;
+  }
+
+  if (nameRef.current.value.length > 32) {
+    alert.show('ERROR CREATING LISTING, NAME TOO LONG', {type: 'error'});
+    return;
+  }
+
+  if (priceRef.current.value < 0.01) {
+    alert.show('ERROR CREATING LISTING, CHECK PRICE', {type: 'error'});
+    return;
+  }
+
+  if (descriptionRef.current.value.length < 1) {
+    alert.show('ERROR CREATING LISTING, CHECK DESCRIPTION', {type: 'error'});
+    return;
+  }
+
+  if (descriptionRef.current.value.length > 96) {
+    alert.show('ERROR CREATING LISTING, DESCRIPTION TOO LONG', {type: 'error'});
+    return;
+  }
+
+  if (imageRef.current.value.length < 1) {
+    alert.show('ERROR CREATING LISTING, CHECK IMAGE', {type: 'error'});
+    return;
+  }
+
   createListingMutation.mutate({
     name: nameRef.current.value,
     price: priceRef.current.value,

@@ -88,7 +88,7 @@ const ListingSubmitHandler = async event => {
     return;
   }
 
-  if (nameRef.current.value.length > 30) {
+  if (nameRef.current.value.length > 32) {
     alert.show('ERROR EDITING LISTING, NAME TOO LONG', {type: 'error'});
     return;
   }
@@ -100,6 +100,11 @@ const ListingSubmitHandler = async event => {
 
   if (descriptionRef.current.value.length < 1) {
     alert.show('ERROR EDITING LISTING, CHECK DESCRIPTION', {type: 'error'});
+    return;
+  }
+
+  if (descriptionRef.current.value.length > 96) {
+    alert.show('ERROR EDITING LISTING, DESCRIPTION TOO LONG', {type: 'error'});
     return;
   }
 

@@ -30,10 +30,16 @@ const Authenticate = (props) => {
     const signUpUserMutation = useMutation({
         mutationFn: signUpUser,
         onSuccess:(data) => {
+
             console.log(data);
-            alert.show('SUCCESSFULLY SIGNED UP!', {type: 'success'});
-            auth.login(data.id, data.token, data.name);
-            navigate('/');
+
+            if (data.message == 'Could not create user, user exists') {
+                alert.show('ERROR SIGNING UP, EMAIL IN USE', {type: 'error'});
+
+            } else {
+                auth.login(data.id, data.token, data.name);
+                navigate('/');
+            }
         },
         onError:(error) => {
             alert.show('ERROR CREATING ACCOUNT', {type: 'error'});
@@ -44,7 +50,9 @@ const Authenticate = (props) => {
     const logInUserMutation = useMutation({
         mutationFn: logInUser,
         onSuccess:(data) => {
+            
             console.log(data);
+
             if (data.message == 'Could not identify user, credentials might be wrong' || data.message == 'Something went wrong with login') {
                 alert.show('ERROR LOGGING IN', {type: 'error'});
             }

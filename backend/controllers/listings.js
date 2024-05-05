@@ -6,9 +6,9 @@ const users = require('../models/users');
 //Input validation
 
 const listingSchema = Joi.object({
-    name: Joi.string().required().min(2).max(30),
+    name: Joi.string().required().min(2).max(32),
     price: Joi.number().required().min(0.01),
-    description: Joi.string().required().min(1),
+    description: Joi.string().required().min(1).max(96),
     image: Joi.string().required().min(1),
     owner: Joi.string().required().min(36),
     displayname: Joi.string().required().min(2).max(27)
@@ -16,9 +16,9 @@ const listingSchema = Joi.object({
 
 const updateSchema = Joi.object({
     id: Joi.number().required().min(1),
-    name: Joi.string().required().min(2).max(30),
+    name: Joi.string().required().min(2).max(32),
     price: Joi.number().required().min(0.01),
-    description: Joi.string().required().min(1),
+    description: Joi.string().required().min(1).max(96),
     image: Joi.string().required().min(1),
 });
 
