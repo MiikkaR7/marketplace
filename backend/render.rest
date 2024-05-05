@@ -1,3 +1,5 @@
+### LOG IN + SIGN UP
+
 POST https://two024-final-project-miikkar7-backend.onrender.com/api/users/signup
 Content-Type: application/json
 
@@ -19,11 +21,13 @@ Content-Type: application/json
 "password": "password123"
 }
 
-###
+### REFERENCES FOR REQUESTS
 
 @authToken = {{login.response.body.token}}
 @listingOwner = {{login.response.body.id}}
 @listingName = {{login.response.body.name}}
+
+### GET REQUESTS (HEALTH CHECK, ALL LISTINGS, INDIVIDUAL LISTING, LISTINGS BY OWNER
 
 GET https://two024-final-project-miikkar7-backend.onrender.com/health
 
@@ -40,7 +44,7 @@ GET https://two024-final-project-miikkar7-backend.onrender.com/api/listings/1
 GET https://two024-final-project-miikkar7-backend.onrender.com/api/listings/mylistings/{{listingOwner}}
 Authorization: BEARER {{authToken}} 
 
-###
+### POST REQUEST
 
 POST https://two024-final-project-miikkar7-backend.onrender.com/api/listings 
 Content-Type: application/json
@@ -57,7 +61,7 @@ Authorization: BEARER {{authToken}}
 
 }
 
-###
+### UPDATE REQUEST
 
 PUT https://two024-final-project-miikkar7-backend.onrender.com/api/listings 
 Content-Type: application/json
@@ -73,7 +77,7 @@ Authorization: BEARER {{authToken}}
 
 }
 
-###
+### DELETE REQUEST
 
 DELETE https://marketplace-backend-wh8c.onrender.com/api/{{listingOwner}}/1
 Authorization: BEARER {{authToken}}
