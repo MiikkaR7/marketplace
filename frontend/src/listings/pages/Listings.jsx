@@ -16,7 +16,7 @@ const [searchResults, setSearchResults] = useState([]);
 const [searchState, setSearchState] = useState(false);
 const [statusMessage, setMessage] = useState('');
 
-//Set search term equal to input fields value
+//Set search term equal to input fields' value
 
 const handleSearchChange = (event) => {
 
