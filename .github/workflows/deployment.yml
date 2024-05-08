@@ -13,7 +13,7 @@ env:
 jobs:
   build:
     # Name of Job
-    name: Build Container Images
+    name: Docker login
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -36,28 +36,6 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      #Backend
-      - name: Build and Push the Backend Image
-        uses: docker/build-push-action@v5.0.0
-        with:
-          context: ./backend
-          file: ./backend/Dockerfile
-          push: true
-          tags: "${{ env.REGISTRY }}/${{ env.BACKEND_IMAGE_NAME }}"
-
-
-      - name: Create production .env file from secret
-        run: echo "${{ secrets.ENV_FILE_PROD }}" > ./frontend/.env
-
-      
-      - name: Build the Frontend Image
-        uses: docker/build-push-action@v5.0.0
-        with:
-          context: ./frontend
-          file: ./frontend/Dockerfile
-          push: true
-          tags: "${{ env.REGISTRY }}/${{ env.FRONTEND_IMAGE_NAME }}"
 
   render-deploy:
     needs: build
