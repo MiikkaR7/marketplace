@@ -27,7 +27,7 @@ const [userId, setuser] = useState(false);
 const [userName, setName] = useState(false);
 const [tokenExpirationDate, setExpirationDate] = useState(false);
 
-//Login callback function that stores users login information
+//Login callback function that stores users' login information
 
 const login = useCallback((uid, token, username, expirationDate) => {
 
