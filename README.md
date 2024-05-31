@@ -1,6 +1,4 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/qCtVf2Dd)
-# Final Project - Miikka Riipi
-Web Programming - Final Project
+# Marketplace - Miikka Riipi
 
 Service is running on Render at https://two024-final-project-miikkar7-frontend.onrender.com/
 
@@ -28,7 +26,6 @@ VITE_API_URL=http://localhost:5030
 
 ### Technologies / stack
 
-The project is based on the practice project and thus uses the same stack.  
 Node.js - Express backend  
 React - Vite frontend  
 mySQL database  
