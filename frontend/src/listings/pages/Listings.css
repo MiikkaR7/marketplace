@@ -42,6 +42,7 @@
     width: 20rem;
     height: 3rem;
     font-size: x-large;
+    font-family: 'Manrope', sans-serif;
 }
 
 .status__message {
