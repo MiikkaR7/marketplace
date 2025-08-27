@@ -31,7 +31,7 @@ const ViewListingModal = props => {
   const nodeRef = useRef();
   return ( 
     <>
-      {props.show && <Backdrop onClick={props.onCancel}/>}
+      {props.show && <Backdrop onClick={props.onClick}/>}
       <CSSTransition 
         in={props.show}
         mountOnEnter
