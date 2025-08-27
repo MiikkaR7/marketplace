@@ -14,7 +14,7 @@
     display: flex;
     width: 100%;
     padding: 1rem 0.5rem;
-    background: rgb(255, 0, 0);
+    background: rgba(0, 0, 0, 0.795);
     color: white;
   }
   
@@ -32,7 +32,7 @@
     width: 3rem;
     height: 3rem;
     font-size: x-large;
-    background-color: red;
+    background-color: rgba(0, 0, 0, 0.795);
     border: 1px solid white;
     margin-left: 88%;
   }
